@@ -9,11 +9,15 @@ class UsersContainer extends Component {
     this.props.fetchUsers()
   }
 
+  renderUsers() {
+    return this.props.users.map(user => user.name)
+  }
+
 
   render() {
     return (
       <div>
-        {this.props.users.name}
+        {this.renderUsers()}
         hi
       </div>
     )
