@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk'
-import usersReducer from './reducer/usersReducer'
+import usersReducer from './reducers/usersReducer'
+import categoriesReducer from './reducers/categoriesReducer';
 
-const store = createStore(usersReducer, applyMiddleware(thunk))
+const combineReducer = combineReducers({users: usersReducer, categories: categoriesReducer})
+
+const store = createStore(combineReducer, applyMiddleware(thunk))
 
 
 
