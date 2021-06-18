@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {fetchUsers} from '../actions/usersAction'
+import Users from '../components/Users'
 
 class UsersContainer extends Component {
 
@@ -9,16 +10,13 @@ class UsersContainer extends Component {
     this.props.fetchUsers()
   }
 
-  renderUsers() {
-    return this.props.users.map(user => user.name)
-  }
+
 
 
   render() {
     return (
       <div>
-        {this.renderUsers()}
-        hi
+        <Users users={this.props.users} />
       </div>
     )
   }
