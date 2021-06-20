@@ -17,8 +17,8 @@ class UserForm extends Component {
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
+  handleSubmit = (event) => {
+    event.preventDefault()
     this.props.createUser(this.state)
     this.setState({
       name: "",

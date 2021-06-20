@@ -8,8 +8,9 @@ import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk'
 import usersReducer from './reducers/usersReducer'
 import categoriesReducer from './reducers/categoriesReducer';
+import picturesReducer from './reducers/picturesReducer'
 
-const combineReducer = combineReducers({users: usersReducer, categories: categoriesReducer})
+const combineReducer = combineReducers({users: usersReducer, categories: categoriesReducer, pictures: picturesReducer})
 
 const store = createStore(combineReducer, applyMiddleware(thunk))
 

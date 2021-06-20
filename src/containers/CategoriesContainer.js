@@ -11,7 +11,7 @@ class CategoriesContainer extends Component {
   }
 
   renderCategories = () => {
-    return this.props.categories.map(category => <Category name={category.name} />)
+    return this.props.categories.map(category => <Category key={category.id} id={category.id} name={category.name} />)
   }
 
 
