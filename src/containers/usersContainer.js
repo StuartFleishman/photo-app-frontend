@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchUsers} from '../actions/usersAction'
 import Users from '../components/Users'
 import UserForm from '../components/UserForm'
+import PictureForm from '../components/PictureForm'
 
 
 class UsersContainer extends Component {
@@ -20,6 +21,7 @@ class UsersContainer extends Component {
       <div>
         <Users users={this.props.users} />
         <UserForm />
+        <PictureForm />
       </div>
     )
   }
