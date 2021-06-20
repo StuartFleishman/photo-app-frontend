@@ -3,13 +3,23 @@ import './App.css';
 import UsersContainer from './containers/UsersContainer';
 import CategoriesContainer from './containers/CategoriesContainer';
 import PicturesContainer from './containers/PicturesContainer';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import NavBar from './components/NavBar'
 
 function App() {
   return (
     <div className="App">
-    <UsersContainer />
-    <CategoriesContainer />
-    <PicturesContainer />
+    <Router>
+      <NavBar />
+      <UsersContainer />
+      <CategoriesContainer />
+      <PicturesContainer />
+    </Router>
     </div>
   );
 }
