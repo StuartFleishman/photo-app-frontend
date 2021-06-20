@@ -17,7 +17,7 @@ class PicturesContainer extends Component {
   render() {
     return (
       <div>
-        <Pictures />
+        <Pictures pictures={this.props.pictures} />
       </div>
     )
   }
@@ -25,6 +25,7 @@ class PicturesContainer extends Component {
 
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     pictures: state.pictures
   }

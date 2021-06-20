@@ -18,11 +18,7 @@ export const createPicture = (picture) => {
   return (dispatch) => {
     const configObj = {
       method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Accepts": "application/json"
-      },
-      body: JSON.stringify(picture)
+      body: picture
     }
 
     fetch(url, configObj)

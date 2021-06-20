@@ -1,9 +1,11 @@
+import Picture from './Picture'
 
-const Pictures = () => {
+
+const Pictures = ({pictures}) => {
   return (
     <div>
       <ul>
-      <li>picture component</li>
+      {pictures.map(picture => <Picture key={picture.id} title={picture.title} image={picture.image_url} />)}
       </ul>
     </div>
   )
