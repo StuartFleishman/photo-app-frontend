@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import {createPicture} from '../actions/picturesAction'
+import {connect} from 'react-redux'
 
-export default class PictureForm extends Component {
+class PictureForm extends Component {
 
   state = {
     title: "",
@@ -16,7 +18,7 @@ export default class PictureForm extends Component {
   
   handleSubmit = (event) => {
     event.preventDefault()
-
+    this.props.createPicture(this.state)
     this.setState({
       title: "",
       image_url: "",
@@ -36,3 +38,5 @@ export default class PictureForm extends Component {
     )
   }
 }
+
+export default connect(null, {createPicture})(PictureForm)

@@ -14,7 +14,7 @@ export const fetchPictures = () => {
   }
 }
 
-export const createUser = (user) => {
+export const createPicture = (picture) => {
   return (dispatch) => {
     const configObj = {
       method: 'POST',
@@ -22,7 +22,7 @@ export const createUser = (user) => {
         "Content-Type": "application/json",
         "Accepts": "application/json"
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(picture)
     }
 
     fetch(url, configObj)
