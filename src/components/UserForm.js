@@ -21,6 +21,7 @@ class UserForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.createUser(this.state)
+    this.props.history.push('/')
     this.setState({
       name: "",
       email: "",

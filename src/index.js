@@ -11,7 +11,7 @@ import categoriesReducer from './reducers/categoriesReducer';
 import picturesReducer from './reducers/picturesReducer'
 import authReducer from './reducers/authReducer'
 
-const combineReducer = combineReducers({users: usersReducer, categories: categoriesReducer, pictures: picturesReducer, authReducer: authReducer})
+const combineReducer = combineReducers({users: usersReducer, categories: categoriesReducer, pictures: picturesReducer, auth: authReducer})
 
 const store = createStore(combineReducer, applyMiddleware(thunk))
 
