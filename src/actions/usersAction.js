@@ -22,13 +22,13 @@ export const createUser = (user) => {
         "Content-Type": "application/json",
         "Accepts": "application/json"
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify({user: user})
     }
 
     fetch(url, configObj)
     .then(resp => resp.json())
-    .then(user => {
-      dispatch(addUser(user))
+    .then(data => {
+      dispatch({type: 'AUTH_SUCCESSFUL', payload: {loggedIn: data.logged_in, currentUser: data.user }})
     })
   }
 }

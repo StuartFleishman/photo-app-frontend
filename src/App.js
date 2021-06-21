@@ -10,15 +10,20 @@ import {
   Link
 } from "react-router-dom";
 import NavBar from './components/NavBar'
+import Home from './components/Home'
+import UserForm from './components/UserForm'
 
 function App() {
   return (
     <div className="App">
     <Router>
       <NavBar />
-      <UsersContainer />
-      <CategoriesContainer />
-      <PicturesContainer />
+    <Switch>
+       <Route exact path="/" component={Home} />
+       <Route path="/signup" component={UserForm} />
+       <Route path="/users" component={UsersContainer} />
+       <Route path="/pictures" component={PicturesContainer} />
+    </Switch>
     </Router>
     </div>
   );

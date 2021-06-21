@@ -8,7 +8,8 @@ class UserForm extends Component {
   state = {
     name: "",
     email: "",
-    password: ""
+    password_digest: "",
+    password_confirmation: ''
   }
 
   handleChange = (event) => {
@@ -23,7 +24,8 @@ class UserForm extends Component {
     this.setState({
       name: "",
       email: "",
-      password: ""
+      password_digest: "",
+      password_confirmation: ''
     })
   }
 
@@ -32,11 +34,17 @@ class UserForm extends Component {
       <form onSubmit={this.handleSubmit}>
         <label >UserName:</label>
         <input onChange={this.handleChange} type="text" name="name" value={this.state.name} />
+        <br />
         <label>Email:</label>
         <input onChange={this.handleChange} type="email" name="email" value={this.state.email} />
+        <br />
         <label>Password:</label>
-        <input onChange={this.handleChange} type="password" name="password" value={this.state.password} />
-        <input type="submit" />
+        <input onChange={this.handleChange} type="password" name="password_digest" value={this.state.password_digest} />
+        <br />
+        <label>Confrim Password</label>
+        <input onChange={this.handleChange} type="password" name="password_confirmation" value={this.state.password_confirmation} />
+        <br />
+        <input type="submit" value="signup" />
       </form>
     )
   }

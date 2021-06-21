@@ -9,8 +9,9 @@ import thunk from 'redux-thunk'
 import usersReducer from './reducers/usersReducer'
 import categoriesReducer from './reducers/categoriesReducer';
 import picturesReducer from './reducers/picturesReducer'
+import authReducer from './reducers/authReducer'
 
-const combineReducer = combineReducers({users: usersReducer, categories: categoriesReducer, pictures: picturesReducer})
+const combineReducer = combineReducers({users: usersReducer, categories: categoriesReducer, pictures: picturesReducer, authReducer: authReducer})
 
 const store = createStore(combineReducer, applyMiddleware(thunk))
 

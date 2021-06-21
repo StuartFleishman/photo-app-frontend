@@ -22,6 +22,11 @@ function NavBar() {
             Pictures
         </NavLink>
         </li>
+        <li>
+        <NavLink exact to="/signup">
+            Signup
+        </NavLink>
+        </li>
       </ul>
     </div>
   )
