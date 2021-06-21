@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {NavLink} from "react-router-dom"
+import {connect} from 'react-redux'
+import {logout} from '../actions/usersAction'
 
-function NavBar() {
+class NavBar extends Component {
+  render(){
+
   return (
     <div>
    
@@ -32,9 +36,15 @@ function NavBar() {
             Login
         </NavLink>
         </li>
+        <li>
+        <NavLink to="" onClick={ () => this.props.logout()}>
+            Logout
+        </NavLink>
+        </li>
       </ul>
     </div>
   )
+  }
 }
 
-export default NavBar
+export default connect(null, {logout})(NavBar)

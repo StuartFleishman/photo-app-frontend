@@ -1,9 +1,11 @@
 const url = "http://127.0.0.1:3001/users"
-const sessions = "http://127.0.0.1:3001/sessions"
+
 
 const setUsers = (users) => ({type: "GOT_USERS", payload: users})
 
 const addUser = (user) => ({type: 'ADD_USER', payload: user})
+
+export const logout = () => ({type: 'LOGOUT'})
 
 export const fetchUsers = () => {
   return (dispatch) => { 
@@ -23,6 +25,7 @@ export const createUser = (user, history) => {
         "Content-Type": "application/json",
         "Accepts": "application/json"
       },
+      credentials: 'include',
       body: JSON.stringify({user: user})
     }
 
@@ -45,6 +48,7 @@ export const login = (user, history) => {
         "Content-Type": "application/json",
         "Accepts": "application/json"
       },
+      credentials: 'include',
       body: JSON.stringify({user: user})
     }
 
