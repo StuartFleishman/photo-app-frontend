@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
-import {createUser} from '../actions/usersAction'
+import {login} from '../actions/usersAction'
 import {connect} from 'react-redux'
 
 
-class UserForm extends Component {
+class Login extends Component {
 
   state = {
     name: "",
     email: "",
-    password: "",
-    password_confirmation: ''
+    password: ""
   }
 
   handleChange = (event) => {
@@ -20,7 +19,7 @@ class UserForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.createUser(this.state, this.props.history)
+    this.props.login(this.state, this.props.history)
     this.setState({
       name: "",
       email: "",
@@ -41,14 +40,11 @@ class UserForm extends Component {
         <label>Password:</label>
         <input onChange={this.handleChange} type="password" name="password" value={this.state.password} />
         <br />
-        <label>Confrim Password</label>
-        <input onChange={this.handleChange} type="password" name="password_confirmation" value={this.state.password_confirmation} />
-        <br />
-        <input type="submit" value="signup" />
+        <input type="submit" value="login" />
       </form>
     )
   }
 
 }
 
-export default connect(null, {createUser})(UserForm)
+export default connect(null, {login})(Login)

@@ -27,6 +27,11 @@ function NavBar() {
             Signup
         </NavLink>
         </li>
+        <li>
+        <NavLink exact to="/login">
+            Login
+        </NavLink>
+        </li>
       </ul>
     </div>
   )
