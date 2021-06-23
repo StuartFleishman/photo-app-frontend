@@ -6,6 +6,9 @@ export default function picturesReducer(state = [], action) {
     case 'ADD_PICTURE': {
       return [...state, action.payload]
     }
+    case 'FILTER_PIC_CAT': {
+      return [...state, {filterCat: state.filter(picture => picture.id === action.payload)}]
+    }
     default: 
       return state
   }

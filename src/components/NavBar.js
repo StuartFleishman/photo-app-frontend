@@ -22,6 +22,11 @@ class NavBar extends Component {
         </NavLink>
         </li>
         <li>
+        <NavLink exact to="/pictures/new">
+            Create A Picture
+        </NavLink>
+        </li>
+        <li>
         <NavLink exact to="/pictures">
             Pictures
         </NavLink>

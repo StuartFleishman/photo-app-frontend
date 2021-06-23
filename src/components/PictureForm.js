@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {createPicture} from '../actions/picturesAction'
 import {connect} from 'react-redux'
+import CategoriesContainer from '../containers/CategoriesContainer'
+import Pictures from './Pictures'
 
 class PictureForm extends Component {
 
@@ -8,7 +10,7 @@ class PictureForm extends Component {
     title: "",
     image_url: {},
     category_id: "",
-    user_id: 1
+    user_id: this.props.auth.currentUser.id
   }
 
   handleChange = (event) => {
@@ -54,12 +56,19 @@ class PictureForm extends Component {
   }
 
 
+  filterPicCategories = (event) => {
+    const category_id = parseInt(event.target.value)
+    const v =this.state.pictures.filter
+  }
+
   
   render() {
     return (
       <div>
+        <CategoriesContainer />
         <form onSubmit={this.handleSubmit}>
         <select onChange={this.hanldeCategoryId}>
+          <option value="">Please Select Category</option>
         {this.renderCategories()}
         </select>
           <label>Picture Title:</label>
@@ -74,7 +83,9 @@ class PictureForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.categories
+    auth: state.auth,
+    categories: state.categories,
+    pictures: state.pictures
   }
 }
 

@@ -4,6 +4,8 @@ const setPictures = (pictures) => ({type: "GOT_PICTURES", payload: pictures})
 
 const addPicture = (picture) => ({type: 'ADD_PICTURE', payload: picture})
 
+export const filterPictureCategories = (id) => ({type: 'FILTER_PIC_CAT', payload: id})
+
 export const fetchPictures = () => {
   return (dispatch) => { 
     fetch(url)

@@ -10,16 +10,16 @@ class CategoriesContainer extends Component {
     this.props.fetchCategories()
   }
 
-  renderCategories = () => {
-    return this.props.categories.map(category => <Category key={category.id} id={category.id} name={category.name} />)
-  }
+  // renderCategories = () => {
+  //   return this.props.categories.map(category => <Category key={category.id} id={category.id} name={category.name} />)
+  // }
 
 
   render() {
     return (
-      <select>
-        {this.renderCategories()}
-      </select>
+      <div>
+        {/* {this.renderCategories()} */}
+      </div>
     )
   }
 }

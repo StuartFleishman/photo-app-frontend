@@ -13,6 +13,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import UserForm from './components/UserForm'
 import Login from './components/Login'
+import PictureForm from './components/PictureForm'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
        <Route exact path="/" component={Home} />
        <Route path="/signup" component={UserForm} />
        <Route path="/users" component={UsersContainer} />
+       <Route path="/pictures/new" component={PictureForm} />
        <Route path="/pictures" component={PicturesContainer} />
        <Route path="/login" component={Login} />
     </Switch>

@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Picture = ({title, image}) => {
+
   return (
     <div>
       <ul>
