@@ -4,7 +4,13 @@ import {fetchPictures, updateLikes} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
 import Pictures from '../components/Pictures'
 import PictureForm from '../components/PictureForm'
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import PictureShow from '../components/PictureShow'
 
 
 class PicturesContainer extends Component {
@@ -31,11 +37,11 @@ class PicturesContainer extends Component {
   }
 
   handleLikes = id => {
-   //add likedPictures: pass in picture id
+
     
     const pictureObj = this.state.pictures.find(pic => pic.id === id)
-    const user_id = this.props.auth.currentUser.id
-    const pObj = {...pictureObj, likes: pictureObj.likes + 1, liked_pictures: user_id}
+   
+    const pObj = {...pictureObj, likes: pictureObj.likes + 1}
     this.props.updateLikes(pObj)
 
     const pictures = this.state.pictures.map(pic => {
@@ -59,13 +65,26 @@ class PicturesContainer extends Component {
 
 
   render() {
+    console.log(this.props)
     return (
       <div>
-        <select onChange={this.hanldeFilterCategories}>
+        
+        {/* <select onChange={this.hanldeFilterCategories}>
           <option value="">Filter Categories</option>
         {this.renderCategories()}
-        </select>
-        <Pictures pictures={this.state.pictures} handleLikes={this.handleLikes} />
+        </select> */}
+        <Switch>
+          <Route exact path="/pictures">
+        <Pictures categories={this.props.categories} hanldeFilterCategories={this.hanldeFilterCategories} pictures={this.state.pictures} handleLikes={this.handleLikes} />
+        </Route>
+          <Route path="/pictures/:id" render={(routeData) => {
+            console.log(routeData)
+            const id = parseInt(routeData.match.params.id)
+            const picture = this.props.pictures.find(pic => pic.id === id)
+          return !!picture ? <PictureShow picture={picture} /> : <div>404</div>
+          }   
+        }/>
+        </Switch>
       </div>
     )
   }

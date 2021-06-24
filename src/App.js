@@ -25,7 +25,7 @@ function App() {
        <Route path="/signup" component={UserForm} />
        <Route path="/users" component={UsersContainer} />
        <Route path="/pictures/new" component={PictureForm} />
-       <Route path="/pictures" component={PicturesContainer} />
+       <Route path="/pictures" component={(routeInfo) => <PicturesContainer routeData={routeInfo} />} />
        <Route path="/login" component={Login} />
     </Switch>
     </Router>
