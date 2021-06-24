@@ -11,6 +11,7 @@ import {
   Link
 } from "react-router-dom";
 import PictureShow from '../components/PictureShow'
+import {createLikedPicture, updateLikedPicture, fetchLikedPictures} from '../actions/likedPicturesAction'
 
 
 class PicturesContainer extends Component {
@@ -23,26 +24,41 @@ class PicturesContainer extends Component {
   componentDidMount() {
     this.props.fetchPictures()
     this.props.fetchCategories()
+    this.props.fetchLikedPictures()
   }
 
   hanldeFilterCategories = (event) => {
-    console.log(event.target.value)
+    
     const pictures = this.props.pictures.filter(pic => {
     return pic.category_id === parseInt(event.target.value)
     })
 
     this.setState({
       pictures: pictures
-    }, () => console.log(this.state))
+    })
   }
 
   handleLikes = id => {
 
     
     const pictureObj = this.state.pictures.find(pic => pic.id === id)
+    const picId = pictureObj.id
+    const ids = {picture_id: picId , user_id: this.props.auth.currentUser.id}
+    
+    if(this.state.liked_pictures) {
+      const picture = this.state.liked_pictures.find(pic => pic.picture_id === id)
+      const picId = picture.id
+      const ids = {picture_id: picId , user_id: this.props.auth.currentUser.id}
+      this.props.updateLikedPicture(ids)
+    }
+    else{
+      this.props.createLikedPicture(ids)
+    }
    
     const pObj = {...pictureObj, likes: pictureObj.likes + 1}
-    this.props.updateLikes(pObj)
+    
+  
+      this.props.updateLikes(pObj)
 
     const pictures = this.state.pictures.map(pic => {
         if (pic.id === id) {
@@ -65,7 +81,7 @@ class PicturesContainer extends Component {
 
 
   render() {
-    console.log(this.props)
+   
     return (
       <div>
         
@@ -96,8 +112,9 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     pictures: state.pictures,
-    categories: state.categories
+    categories: state.categories,
+    liked_pictures: state.liked_pictures
   }
 }
 
-export default connect(mapStateToProps, {fetchPictures, fetchCategories, updateLikes})(PicturesContainer)
+export default connect(mapStateToProps, {fetchPictures, fetchCategories, updateLikes, createLikedPicture, updateLikedPicture, fetchLikedPictures})(PicturesContainer)

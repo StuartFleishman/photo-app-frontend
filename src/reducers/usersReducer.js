@@ -1,5 +1,5 @@
 export default function usersReducer(state = [], action) {
-  console.log(action)
+  
   switch(action.type) {
     case 'GOT_USERS': {
       return action.payload

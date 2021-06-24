@@ -7,46 +7,37 @@ class NavBar extends Component {
   render(){
 
   return (
-    <div>
+    <div class="container">
    
 
-     <ul>
-        <li>
-        <NavLink exact to="/">
+     
+        <NavLink class="navbar-brand" exact to="/">
             Home
         </NavLink>
-        </li>
-        <li>
-        <NavLink exact to="/users">
+        <NavLink class="navbar-brand" exact to="/users">
             Users
         </NavLink>
-        </li>
-        <li>
-        <NavLink exact to="/pictures/new">
+       
+        <NavLink class="navbar-brand" exact to="/pictures/new">
             Create A Picture
         </NavLink>
-        </li>
-        <li>
-        <NavLink exact to="/pictures">
+        
+        <NavLink class="navbar-brand" exact to="/pictures">
             Pictures
         </NavLink>
-        </li>
-        <li>
-        <NavLink exact to="/signup">
+       
+        <NavLink class="navbar-brand" exact to="/signup">
             Signup
         </NavLink>
-        </li>
-        <li>
-        <NavLink exact to="/login">
+        
+        <NavLink class="navbar-brand" exact to="/login">
             Login
         </NavLink>
-        </li>
-        <li>
-        <NavLink to="" onClick={ () => this.props.logout()}>
+       
+        <NavLink class="navbar-brand" to="" onClick={ () => this.props.logout()}>
             Logout
         </NavLink>
-        </li>
-      </ul>
+       
     </div>
   )
   }

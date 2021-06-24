@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
     <Router>
-      <NavBar />
+      <NavBar className="navbar navbar-dark bg-info mb-5"/>
     <Switch>
        <Route exact path="/" component={Home} />
        <Route path="/signup" component={UserForm} />
