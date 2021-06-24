@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {fetchPictures} from '../actions/picturesAction'
+import {fetchPictures, updateLikes} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
 import Pictures from '../components/Pictures'
 import PictureForm from '../components/PictureForm'
@@ -30,6 +30,14 @@ class PicturesContainer extends Component {
     }, () => console.log(this.state))
   }
 
+  handleLikes = id => {
+   //add likedPictures: pass in picture id
+    
+    const pictureObj = this.state.pictures.find(pic => pic.id === id)
+    const pObj = {...pictureObj, likes: pictureObj.likes + 1, likedPictures: this.props.auth.currentUser.id}
+    this.props.updateLikes(pObj)
+  }
+
   renderCategories = () => {
     return this.props.categories.map(category => <option key={category.id} value={category.id} name={category.id}>{category.name}</option>)
   }
@@ -44,7 +52,7 @@ class PicturesContainer extends Component {
           <option value="">Filter Categories</option>
         {this.renderCategories()}
         </select>
-        <Pictures pictures={this.state.pictures} />
+        <Pictures pictures={this.state.pictures} handleLikes={this.handleLikes} />
       </div>
     )
   }
@@ -54,9 +62,10 @@ class PicturesContainer extends Component {
 const mapStateToProps = (state) => {
   console.log(state)
   return {
+    auth: state.auth,
     pictures: state.pictures,
     categories: state.categories
   }
 }
 
-export default connect(mapStateToProps, {fetchPictures, fetchCategories})(PicturesContainer)
+export default connect(mapStateToProps, {fetchPictures, fetchCategories, updateLikes})(PicturesContainer)

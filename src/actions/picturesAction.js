@@ -4,7 +4,8 @@ const setPictures = (pictures) => ({type: "GOT_PICTURES", payload: pictures})
 
 const addPicture = (picture) => ({type: 'ADD_PICTURE', payload: picture})
 
-export const filterPictureCategories = (id) => ({type: 'FILTER_PIC_CAT', payload: id})
+
+const hanldeLikes = (picture) => ({type: 'INCREMENT_LIKE', payload: picture})
 
 export const fetchPictures = () => {
   return (dispatch) => { 
@@ -24,6 +25,28 @@ export const createPicture = (picture) => {
     }
 
     fetch(url, configObj)
+    .then(resp => resp.json())
+    .then(picture => {
+      dispatch(addPicture(picture))
+    })
+  }
+}
+
+export const updateLikes = (picture) => {
+
+  return (dispatch) => {
+    const configObj = {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      credentials: 'include',
+      body: JSON.stringify(picture)
+    }
+
+
+    fetch(`${url}/${picture.id}`, configObj)
     .then(resp => resp.json())
     .then(picture => {
       dispatch(addPicture(picture))
