@@ -34,8 +34,21 @@ class PicturesContainer extends Component {
    //add likedPictures: pass in picture id
     
     const pictureObj = this.state.pictures.find(pic => pic.id === id)
-    const pObj = {...pictureObj, likes: pictureObj.likes + 1, likedPictures: this.props.auth.currentUser.id}
+    const user_id = this.props.auth.currentUser.id
+    const pObj = {...pictureObj, likes: pictureObj.likes + 1, liked_pictures: user_id}
     this.props.updateLikes(pObj)
+
+    const pictures = this.state.pictures.map(pic => {
+        if (pic.id === id) {
+            return {...pic, likes: pic.likes + 1}
+        } else {
+            return pic
+        }
+        })
+    this.setState({
+        pictures: pictures
+    })
+
   }
 
   renderCategories = () => {
