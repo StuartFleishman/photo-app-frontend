@@ -1,20 +1,28 @@
 import Picture from './Picture'
+import React, { Component } from 'react'
 
 
-
-const Pictures = ({pictures, handleLikes, hanldeFilterCategories, categories}) => {
+const Pictures = ({pictures, handleLikes, hanldeFilterCategories, categories, likedPictures, currentUserId}) => {
+  
   const renderCategories = () => {
     return categories.map(category => <option key={category.id} value={category.id} name={category.id}>{category.name}</option>)
   }
+
+ 
+
+  
+
   return (
 
-    <div>
+    <div className="browser-default">
+      hihihi
       <select onChange={hanldeFilterCategories}>
           <option value="">Filter Categories</option>
           {renderCategories()}
         </select>
+    
       <ul>
-      {pictures.map(picture => <Picture id={picture.id} handleLikes={handleLikes} category={picture.category_id} key={picture.id} title={picture.title} image={picture.image_url} likes={picture.likes} />)}
+      {pictures.map(picture => <Picture currentUserId={currentUserId} likedPictures={likedPictures} id={picture.id} handleLikes={handleLikes} category={picture.category_id} key={picture.id} title={picture.title} image={picture.image_url} likes={picture.likes} />)}
       </ul>
     </div>
   )

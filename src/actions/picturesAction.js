@@ -17,7 +17,7 @@ export const fetchPictures = () => {
   }
 }
 
-export const createPicture = (picture) => {
+export const createPicture = (picture, history) => {
   return (dispatch) => {
     const configObj = {
       method: 'POST',
@@ -28,8 +28,11 @@ export const createPicture = (picture) => {
     .then(resp => resp.json())
     .then(picture => {
       dispatch(addPicture(picture))
+      history.push(`/pictures/${picture.id}`)
     })
+    
   }
+  
 }
 
 export const updateLikes = (picture) => {

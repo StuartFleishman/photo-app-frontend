@@ -40,7 +40,7 @@ class PictureForm extends Component {
     formData.append('image_url', this.state.image_url);
     formData.append('user_id', this.state.user_id);
 
-    this.props.createPicture(formData)
+    this.props.createPicture(formData, this.props.history)
 
     this.setState({
       title: "",

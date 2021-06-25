@@ -6,7 +6,9 @@ import {
   Link
 } from "react-router-dom";
 
-const Picture = ({title, image, likes, handleLikes, id}) => {
+const Picture = ({title, image, likes, handleLikes, id, likedPictures, currentUserId}) => {
+
+  
 
   return (
     <div>
@@ -14,7 +16,9 @@ const Picture = ({title, image, likes, handleLikes, id}) => {
       <li><Link to={`/pictures/${id}`}>{title}</Link></li>
       <img src={image} alt={title} height={200} width={200} />
         <p>{likes}</p>
-      <button onClick={() => handleLikes(id)} >Like</button>
+      {/* {likedPictures.find(like => like.picture_id === id && like.user_id === currentUserId) ? <h5>already liked</h5> : */}
+        
+        <button onClick={() => handleLikes(id)} >Like</button>
       </ul>
     </div>
   )

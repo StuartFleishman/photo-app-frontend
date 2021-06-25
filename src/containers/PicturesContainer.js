@@ -43,22 +43,16 @@ class PicturesContainer extends Component {
     
     const pictureObj = this.state.pictures.find(pic => pic.id === id)
     const picId = pictureObj.id
-    const ids = {picture_id: picId , user_id: this.props.auth.currentUser.id}
+    const ids = {picture_id: picId, user_id: this.props.auth.currentUser.id}
+
+   
+    this.props.createLikedPicture(ids)
     
-    if(this.state.liked_pictures) {
-      const picture = this.state.liked_pictures.find(pic => pic.picture_id === id)
-      const picId = picture.id
-      const ids = {picture_id: picId , user_id: this.props.auth.currentUser.id}
-      this.props.updateLikedPicture(ids)
-    }
-    else{
-      this.props.createLikedPicture(ids)
-    }
    
     const pObj = {...pictureObj, likes: pictureObj.likes + 1}
     
   
-      this.props.updateLikes(pObj)
+    this.props.updateLikes(pObj)
 
     const pictures = this.state.pictures.map(pic => {
         if (pic.id === id) {
@@ -85,13 +79,10 @@ class PicturesContainer extends Component {
     return (
       <div>
         
-        {/* <select onChange={this.hanldeFilterCategories}>
-          <option value="">Filter Categories</option>
-        {this.renderCategories()}
-        </select> */}
+       
         <Switch>
           <Route exact path="/pictures">
-        <Pictures categories={this.props.categories} hanldeFilterCategories={this.hanldeFilterCategories} pictures={this.state.pictures} handleLikes={this.handleLikes} />
+        <Pictures currentUserId={this.props.auth.currentUser.id} likedPictures={this.props.likedPictures} categories={this.props.categories} hanldeFilterCategories={this.hanldeFilterCategories} pictures={this.state.pictures} handleLikes={this.handleLikes} />
         </Route>
           <Route path="/pictures/:id" render={(routeData) => {
             console.log(routeData)
@@ -113,7 +104,7 @@ const mapStateToProps = (state) => {
     auth: state.auth,
     pictures: state.pictures,
     categories: state.categories,
-    liked_pictures: state.liked_pictures
+    likedPictures: state.likedPictures
   }
 }
 

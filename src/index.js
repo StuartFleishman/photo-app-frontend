@@ -11,6 +11,7 @@ import categoriesReducer from './reducers/categoriesReducer';
 import picturesReducer from './reducers/picturesReducer'
 import authReducer from './reducers/authReducer'
 import likedPicturesReducer from './reducers/likedPicturesReducer'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const combineReducer = combineReducers({users: usersReducer, categories: categoriesReducer, pictures: picturesReducer, auth: authReducer, likedPictures: likedPicturesReducer })
 

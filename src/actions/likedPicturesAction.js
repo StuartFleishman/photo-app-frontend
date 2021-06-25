@@ -16,29 +16,27 @@ export const fetchLikedPictures = () => {
 }
 
 export const createLikedPicture = (ids) => {
-  debugger
+ 
   return (dispatch) => {
+
     const configObj = {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
         "Accepts": "application/json"
       },
-      credentials: 'include',
       body: JSON.stringify(ids)
     }
 
     fetch(url, configObj)
     .then(resp => resp.json())
     .then(data => {
-      debugger
       dispatch(addLikedPicture(data))
     })
   }
 }
 
-export const updateLikedPicture = (picture) => {
-  debugger
+export const updateLikedPicture = (picture, likedId) => {
   return (dispatch) => {
     const configObj = {
       method: 'PATCH',
@@ -51,7 +49,7 @@ export const updateLikedPicture = (picture) => {
     }
 
 
-    fetch(`${url}/${picture.id}`, configObj)
+    fetch(`${url}/${likedId}`, configObj)
     .then(resp => resp.json())
     .then(picture => {
       dispatch(addLikedPicture(picture))
