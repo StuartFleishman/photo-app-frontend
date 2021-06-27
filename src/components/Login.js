@@ -11,6 +11,8 @@ class Login extends Component {
     password: ""
   }
 
+
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -19,6 +21,7 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+ 
     this.props.login(this.state, this.props.history)
     this.setState({
       name: "",
@@ -29,6 +32,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.props.error)
     return(
       <form onSubmit={this.handleSubmit}>
         <label >UserName:</label>
@@ -41,10 +45,21 @@ class Login extends Component {
         <input onChange={this.handleChange} type="password" name="password" value={this.state.password} />
         <br />
         <input type="submit" value="login" />
+       {!this.props.auth.error ? <h1>Please Log In</h1> : <h1>Please Try Again</h1>}
       </form>
+      
     )
   }
 
 }
 
-export default connect(null, {login})(Login)
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    auth: state.auth
+  }
+}
+
+
+
+export default connect(mapStateToProps , {login})(Login)

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchUsers} from '../actions/usersAction'
 import Users from '../components/Users'
 import UserForm from '../components/UserForm'
+import Login from '../components/Login'
 
 
 
@@ -27,6 +28,7 @@ class UsersContainer extends Component {
 
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     users: state.users
   }

@@ -1,4 +1,5 @@
-export default function authReducer(state = {loggedIn: false, currentUser: {}},action){
+export default function authReducer(state = {loggedIn: false, currentUser: {}, error: false},action){
+  console.log(action.type)
   switch(action.type){
     case 'AUTH_SUCCESSFUL':
       return {
@@ -6,6 +7,12 @@ export default function authReducer(state = {loggedIn: false, currentUser: {}},a
         loggedIn: action.payload.loggedIn,
         currentUser: action.payload.currentUser,
       }
+    case 'UN_SUCCESSFUL': 
+      return {
+        ...state, 
+        error: true
+      }
+  
     case 'LOGOUT':
       return{
         ...state,
