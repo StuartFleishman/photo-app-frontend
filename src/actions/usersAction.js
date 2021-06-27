@@ -7,6 +7,8 @@ const addUser = (user) => ({type: 'ADD_USER', payload: user})
 
 export const logout = () => ({type: 'LOGOUT'})
 
+const unsuccesuflLogin = (error) => ({type: 'UN_SUCCESSFUL', payload: error})
+
 export const fetchUsers = () => {
   return (dispatch) => { 
     fetch(url)
@@ -59,6 +61,10 @@ export const login = (user, history) => {
         type: 'AUTH_SUCCESSFUL', payload: {loggedIn: data.logged_in, currentUser: data.user }
       })
       history.push('/')
+    })
+    .catch(error => {
+      console.log(error)
+     
     })
   }
 }
