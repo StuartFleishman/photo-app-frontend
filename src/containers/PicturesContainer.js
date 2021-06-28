@@ -42,18 +42,18 @@ class PicturesContainer extends Component {
 
     
     const pictureObj = this.state.pictures.find(pic => pic.id === id)
-    const picId = pictureObj.id
-    const ids = {picture_id: picId, user_id: this.props.auth.currentUser.id}
-
    
-    this.props.createLikedPicture(ids)
     
-   
+    // create a liked_pictures on backend
+    // const picId = pictureObj.id
+    // const ids = {picture_id: picId, user_id: this.props.auth.currentUser.id}
+    // this.props.createLikedPicture(ids)
+    
+   //update likes on backend
     const pObj = {...pictureObj, likes: pictureObj.likes + 1}
-    
-  
     this.props.updateLikes(pObj)
 
+    //update state to show likes to users
     const pictures = this.state.pictures.map(pic => {
         if (pic.id === id) {
             return {...pic, likes: pic.likes + 1}

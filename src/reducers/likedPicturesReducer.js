@@ -3,6 +3,9 @@ export default function likedPicturesReducer(state = [], action) {
     case 'ADD_LIKED_PICTURES': {
       return [...state, action.payload]
     }
+    case 'UPDATE_LIKES' : 
+      return {}
+  
     case 'GOT_LIKED_PICTURES': {
       return action.payload
     }

@@ -4,6 +4,8 @@ const addLikedPicture = (ids) => ({type: 'ADD_LIKED_PICTURES', payload: ids})
 
 const setLikedPictures = (pictures) => ({type: "GOT_LIKED_PICTURES", payload: pictures})
 
+const updateLikesPicture = (picture) => ({type: "UPDATE_LIKES", payload: picture})
+
 export const fetchLikedPictures = () => {
   return (dispatch) => { 
     fetch(url)
@@ -31,6 +33,7 @@ export const createLikedPicture = (ids) => {
     fetch(url, configObj)
     .then(resp => resp.json())
     .then(data => {
+
       dispatch(addLikedPicture(data))
     })
   }
@@ -52,7 +55,7 @@ export const updateLikedPicture = (picture, likedId) => {
     fetch(`${url}/${likedId}`, configObj)
     .then(resp => resp.json())
     .then(picture => {
-      dispatch(addLikedPicture(picture))
+      dispatch(updateLikesPicture(picture))
     })
   }
 }

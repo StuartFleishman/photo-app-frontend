@@ -5,7 +5,7 @@ const setPictures = (pictures) => ({type: "GOT_PICTURES", payload: pictures})
 const addPicture = (picture) => ({type: 'ADD_PICTURE', payload: picture})
 
 
-const handleLikes = (picture) => ({type: 'INCREMENT_LIKE', payload: picture})
+const handleLikes = (picture, id) => ({type: 'INCREMENT_LIKE', id: id, payload: picture})
 
 export const fetchPictures = () => {
   return (dispatch) => { 
@@ -51,7 +51,8 @@ export const updateLikes = (picture) => {
     fetch(`${url}/${picture.id}`, configObj)
     .then(resp => resp.json())
     .then(picture => {
-      dispatch(handleLikes(picture))
+      const id = picture.id
+      dispatch(handleLikes(picture, id))
     })
   }
 }
