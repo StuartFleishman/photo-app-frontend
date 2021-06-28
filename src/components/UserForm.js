@@ -47,7 +47,7 @@ class UserForm extends Component {
         <input onChange={this.handleChange} type="password" name="password_confirmation" value={this.state.password_confirmation} />
         <br />
         <input type="submit" value="signup" />
-        {this.props.auth.message.map(m=> <h1>{m}</h1>)}
+        {this.props.auth.message.map((m, idx)=> <h1 key={idx}>{m}</h1>)}
       </form>
     )
   }
