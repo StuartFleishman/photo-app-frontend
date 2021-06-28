@@ -5,11 +5,25 @@ const setUsers = (users) => ({type: "GOT_USERS", payload: users})
 
 const addUser = (user) => ({type: 'ADD_USER', payload: user})
 
-export const logout = () => ({type: 'LOGOUT'})
+
 
 export const unsuccesuflLogin = (error) => ({type: 'UN_SUCCESSFUL', payload: error})
 
 const unsuccesuflCreate = (error) => ({type: 'UN_SUCCESSFUL_CREATE', payload: error})
+
+export const logoutUser = () => {
+  return (dispatch) => { 
+    fetch(`http://localhost:3001/logout`, {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      dispatch({type: 'LOGOUT'})
+    })
+  }
+}
+
 
 export const fetchUsers = () => {
   return (dispatch) => { 
