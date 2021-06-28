@@ -14,6 +14,7 @@ import Home from './components/Home'
 import UserForm from './components/UserForm'
 import Login from './components/Login'
 import PictureForm from './components/PictureForm'
+import topRated from './components/topRated';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
        <Route path="/pictures/new" component={PictureForm} />
        <Route path="/pictures" component={(routeInfo) => <PicturesContainer routeData={routeInfo} />} />
        <Route path="/login" component={Login} />
+       <Route path="/toprated" component={topRated} />
     </Switch>
     </Router>
     </div>

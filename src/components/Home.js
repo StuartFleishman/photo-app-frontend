@@ -13,6 +13,16 @@ class Home1 extends Component {
   setUserPics() { 
     return this.props.pictures.map(picture => picture.user_id === this.props.user.id ? <h1><img src={picture.image_url}/>{picture.title}</h1> : <h1></h1>)
   }
+
+  topRated() {
+    return this.props.pictures.sort((a, b) => b.likes - a.likes) 
+  }
+
+  // renderRated() {
+  //   this.topRated.map(picture => {
+  //     return <h1><img src={picture.image_url}/>{picture.title}</h1>
+  //    })
+  // }
   
  
   
@@ -22,7 +32,7 @@ class Home1 extends Component {
       <div>
         Welcome Dude!
         {this.props.user.name}
-        {this.setUserPics()}
+        {/* {this.renderRated()} */}
       </div>
     )
   }

@@ -23,6 +23,7 @@ class NavBar extends Component {
       <ReactBootStrap.Nav.Link as={Link} href="/signup" to="/signup" >SignUp</ReactBootStrap.Nav.Link>
       <ReactBootStrap.Nav.Link as={Link} href="/login" to="/login" >Login</ReactBootStrap.Nav.Link>
       <ReactBootStrap.Nav.Link as={Link} href="/logout" to="/logout" >Logout</ReactBootStrap.Nav.Link>
+      <ReactBootStrap.Nav.Link as={Link} href="/toprated" to="/toprated" >Top Rated</ReactBootStrap.Nav.Link>
      
     </ReactBootStrap.Nav>
   </ReactBootStrap.Navbar.Collapse>
