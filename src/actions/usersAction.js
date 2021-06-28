@@ -9,6 +9,8 @@ export const logout = () => ({type: 'LOGOUT'})
 
 export const unsuccesuflLogin = (error) => ({type: 'UN_SUCCESSFUL', payload: error})
 
+const unsuccesuflCreate = (error) => ({type: 'UN_SUCCESSFUL_CREATE', payload: error})
+
 export const fetchUsers = () => {
   return (dispatch) => { 
     fetch(url)
@@ -34,10 +36,15 @@ export const createUser = (user, history) => {
     fetch(url, configObj)
     .then(resp => resp.json())
     .then(data => {
+      if (data.status === 500) {
+        dispatch(unsuccesuflCreate(data.message))
+      }
+      else {
       dispatch({
         type: 'AUTH_SUCCESSFUL', payload: {loggedIn: data.logged_in, currentUser: data.user }
       })
       history.push('/')
+    }
     })
   }
 }

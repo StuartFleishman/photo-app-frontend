@@ -29,7 +29,9 @@ class UserForm extends Component {
     })
   }
 
+
   render() {
+    const renderError = this.props.auth.message.map(m=> <h1>{m}</h1>)
     return(
       <form onSubmit={this.handleSubmit}>
         <label >UserName:</label>
@@ -45,10 +47,18 @@ class UserForm extends Component {
         <input onChange={this.handleChange} type="password" name="password_confirmation" value={this.state.password_confirmation} />
         <br />
         <input type="submit" value="signup" />
+        {this.props.auth.message.map(m=> <h1>{m}</h1>)}
       </form>
     )
   }
 
 }
 
-export default connect(null, {createUser})(UserForm)
+const mapStateToProps = state => {
+  console.log(state.auth)
+  return {
+    auth: state.auth
+  }
+}
+
+export default connect(mapStateToProps, {createUser})(UserForm)
