@@ -44,10 +44,10 @@ class PicturesContainer extends Component {
     const pictureObj = this.state.pictures.find(pic => pic.id === id)
    
     
-    // create a liked_pictures on backend
-    // const picId = pictureObj.id
-    // const ids = {picture_id: picId, user_id: this.props.auth.currentUser.id}
-    // this.props.createLikedPicture(ids)
+    //create a liked_pictures on backend
+    const picId = pictureObj.id
+    const ids = {picture_id: picId, user_id: this.props.auth.currentUser.id}
+    this.props.createLikedPicture(ids)
     
    //update likes on backend
     const pObj = {...pictureObj, likes: pictureObj.likes + 1}
@@ -99,7 +99,6 @@ class PicturesContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     auth: state.auth,
     pictures: state.pictures,

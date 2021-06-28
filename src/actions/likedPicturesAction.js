@@ -33,7 +33,6 @@ export const createLikedPicture = (ids) => {
     fetch(url, configObj)
     .then(resp => resp.json())
     .then(data => {
-
       dispatch(addLikedPicture(data))
     })
   }
@@ -55,6 +54,7 @@ export const updateLikedPicture = (picture, likedId) => {
     fetch(`${url}/${likedId}`, configObj)
     .then(resp => resp.json())
     .then(picture => {
+      debugger
       dispatch(updateLikesPicture(picture))
     })
   }
