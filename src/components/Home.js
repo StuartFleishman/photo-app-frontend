@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {fetchPictures} from '../actions/picturesAction'
+import UserCard from './UserCard'
+import {deletePicture} from '../actions/picturesAction'
 
 class Home extends Component {
   
@@ -12,9 +14,9 @@ class Home extends Component {
 
   setUserPics() { 
 
-    // const pic = this.props.pictures.pictures.map(picture => picture.user_id === this.props.user.id ? <h1><img src={picture.image_url}/>{picture.title}</h1> : <h1></h1>)
+   
     const picArray = this.props.pictures.map(pic => pic)
-    return picArray.map(picture => picture.user_id === this.props.user.id ? <h1><img src={picture.image_url}/>{picture.title}</h1> : <h1></h1>)
+    return picArray.map(picture => picture.user_id === this.props.user.id ? <UserCard id={picture.id} image={picture.image_url} title={picture.title} deletePicture={this.props.deletePicture} /> : <h1></h1>)
   }
 
 
@@ -25,7 +27,6 @@ class Home extends Component {
   render() {
     return (
       <div>
-        Welcome Dude!
         {this.props.user.name}
         {this.setUserPics()}
       </div>
@@ -43,4 +44,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {fetchPictures})(Home)
+export default connect(mapStateToProps, {fetchPictures, deletePicture})(Home)

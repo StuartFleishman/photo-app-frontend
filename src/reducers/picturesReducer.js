@@ -22,6 +22,11 @@ export default function picturesReducer(state = [], action) {
           return picture
         }
      })
+
+     case "DELETED_ITEM": 
+      
+        const newPic = state.filter(pic => pic.id !== action.payload)
+        return newPic
     
     default: 
       return state

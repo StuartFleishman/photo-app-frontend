@@ -7,6 +7,8 @@ const addPicture = (picture) => ({type: 'ADD_PICTURE', payload: picture})
 
 const handleLikes = (picture, id) => ({type: 'INCREMENT_LIKE', id: id, payload: picture})
 
+const deletedItem = (id) => ({type: "DELETED_ITEM", payload: id })
+
 export const fetchPictures = () => {
   return (dispatch) => { 
     fetch(url)
@@ -54,6 +56,26 @@ export const updateLikes = (picture) => {
     .then(picture => {
       const id = picture.id
       dispatch(handleLikes(picture, id))
+    })
+  }
+}
+
+export const deletePicture = (id, history) => {
+  
+  return (dispatch) => {
+    const configObj = {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      }
+    }
+
+
+    fetch(`${url}/${id}`, configObj)
+    .then(resp => resp.json())
+    .then(picture => {
+      dispatch(deletedItem(id))
     })
   }
 }
