@@ -1,18 +1,10 @@
 import React, { Component } from 'react'
 import {createPicture} from '../actions/picturesAction'
-import {fetchCategories} from '../actions/categoriesAction'
 import {connect} from 'react-redux'
 import CategoriesContainer from '../containers/CategoriesContainer'
 import Pictures from './Pictures'
-import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 
 class PictureForm extends Component {
-
-  componentDidMount() {
-    this.props.fetchCategories()
-  }
 
   state = {
     title: "",
@@ -72,43 +64,20 @@ class PictureForm extends Component {
   
   render() {
     return (
-<Form onSubmit={this.handleSubmit}>
-  <Form.Row>
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label>Picture Title:</Form.Label>
-      <Form.Control onChange={this.handleChange} value={this.state.title} name="title" type="text" placeholder="Enter title" />
-    </Form.Group>
-    </Form.Row>
-    <Form.Row>
-
-    <Form.Group as={Col} >
-      <Form.Control onChange={this.handleImage} name="image_url" type="file" />
-    </Form.Group>
-  </Form.Row>
-
-
-
-
-  <Form.Row>
- 
-
-    <Form.Group as={Col} controlId="formGridState">
-      <Form.Label>Category</Form.Label>
-      <Form.Control onChange={this.hanldeCategoryId} as="select" defaultValue="Choose...">
-      <option value="">Please Select Category</option>
-          {this.renderCategories()}
-      </Form.Control>
-    </Form.Group>
-
-   
-  </Form.Row>
-
-
-
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
+      <div>
+        <CategoriesContainer />
+        <form onSubmit={this.handleSubmit}>
+        <select onChange={this.hanldeCategoryId}>
+          <option value="">Please Select Category</option>
+        {this.renderCategories()}
+        </select>
+          <label>Picture Title:</label>
+          <input onChange={this.handleChange} value={this.state.title} name="title" type="text" />
+          <input onChange={this.handleImage} name="image_url" type="file" />
+          <input type="submit" />
+        </form>
+        {this.props.loading ? <h1>Loading</h1> : <h1>CREATE A PICTURE!!</h1>}
+      </div>
     )
   }
 }
@@ -122,4 +91,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {createPicture, fetchCategories})(PictureForm)
+export default connect(mapStateToProps, {createPicture})(PictureForm)
