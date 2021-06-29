@@ -46,9 +46,9 @@ class PicturesContainer extends Component {
    
     
     //create a liked_pictures on backend
-    const picId = pictureObj.id
-    const ids = {picture_id: picId, user_id: this.props.auth.currentUser.id}
-    this.props.createLikedPicture(ids)
+    // const picId = pictureObj.id
+    // const ids = {picture_id: picId, user_id: this.props.auth.currentUser.id}
+    // this.props.createLikedPicture(ids)
     
    //update likes on backend
     const pObj = {...pictureObj, likes: pictureObj.likes + 1}
@@ -91,27 +91,15 @@ class PicturesContainer extends Component {
        
         <Switch>
           <Route exact path="/pictures">
-        <Pictures currentUserId={this.props.auth.currentUser.id} likedPictures={this.props.likedPictures} categories={this.props.categories} hanldeFilterCategories={this.hanldeFilterCategories} pictures={this.state.pictures} handleLikes={this.handleLikes} />
-        </Route>
-          <Route path="/pictures/:id" render={(routeData) => {
-            console.log(routeData)
-            const id = parseInt(routeData.match.params.id)
-            // this.renderPictures(id)
-            // const picture = this.props.pictures.find(pic => pic.id === id)
-            // const picture = this.props.pictures.pictures
-          //   // // picture.find(pic => pic.id == id)
-          //   const pictures = this.props.pictures.pictures
-          // let pictures = this.props.pictures.pictures
- 
-          // const pic = pictures.find(p => p.id === id)
-         
-          const yo = this.props.pictures
-          const mo = yo.pictures
-          
-          // return !!pic ? <PictureShow picture={pic} /> : <div>404</div>
-          return !!mo.id === id  ? <PictureShow picture={mo} /> : <h1>error!!!</h1>
-          }   
-        }/>
+              <Pictures currentUserId={this.props.auth.currentUser.id} likedPictures={this.props.likedPictures} categories={this.props.categories} hanldeFilterCategories={this.hanldeFilterCategories} pictures={this.state.pictures} handleLikes={this.handleLikes} />
+          </Route>
+              <Route path="/pictures/:id" component={(routeData) => <PictureShow routeData={routeData} />
+               
+                // const id = parseInt(routeData.match.params)
+                // const picture = this.props.pictures.find(picture => picture.id === id)
+                // return !!picture ? <PictureShow picture={picture}/> : <div>404</div>
+              
+              }/>
         </Switch>
       </div>
     )
@@ -120,7 +108,8 @@ class PicturesContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-  
+ 
+  // const picArray = state.pictures.pictures.map( pic => pic )
   return {
     auth: state.auth,
     pictures: state.pictures,

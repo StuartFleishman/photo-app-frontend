@@ -1,19 +1,34 @@
-import React from 'react'
-import '../App.css'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-const PictureShow = (props) => {
+
+class PictureShow extends Component {
+
+  findPic() {
+    const id = parseInt(this.props.routeData.match.params.id)
+    const picture = this.props.pictures.find(pic => pic.id == id)
+    return !!picture ? <div><img src={picture.image_url}/>{picture.title}</div> : <div>Error</div>
+  }
+
   
-
-
-
-  return (
+  render() {
   
-    <div>
-      <h1>{props.picture.title}</h1>
-      <img src={props.picture.image_url} alt={props.picture.title} height={200} width={200} />
-
-    </div>
-  )
+    return (
+      <div>
+        Here's your pic Dude!
+        {this.findPic()}
+      </div>
+    )
+  }
 }
 
-export default PictureShow
+const mapState = state => {
+
+  
+
+  return {
+    pictures: state.pictures
+  }
+}
+
+export default connect(mapState)(PictureShow)
