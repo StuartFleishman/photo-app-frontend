@@ -4,6 +4,7 @@ import {fetchPictures, updateLikes} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
 import Picture from './Picture'
 import RatedCard from './ratedCard'
+import {fetchUsers} from '../actions/usersAction'
 
 
 class topRated extends Component {
@@ -11,6 +12,7 @@ class topRated extends Component {
   componentDidMount() {
     this.props.fetchPictures()
     this.props.fetchCategories()
+    this.props.fetchUsers()
   }
   
 sortedArray = () => {
@@ -23,7 +25,7 @@ sortedArray = () => {
     return (
       <div>
         <ol>
-    {this.props.ratedPics.map(pic => <RatedCard image={pic.image_url} title={pic.title} likes={pic.likes} />)}
+    {this.props.ratedPics.map(pic => <RatedCard users={this.props.users} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)}
        </ol>
       </div>
     )
@@ -37,6 +39,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     auth: state.auth,
+    users: state.users,
     pictures: state.pictures,
     categories: state.categories,
     ratedPics: ratedPics
@@ -47,4 +50,4 @@ const mapStateToProps = (state, ownProps) => {
 
 
 
-export default connect(mapStateToProps, {fetchCategories, fetchPictures})(topRated)
+export default connect(mapStateToProps, {fetchCategories, fetchPictures, fetchUsers})(topRated)

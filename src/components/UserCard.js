@@ -7,13 +7,14 @@ import {
 } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
+import { useHistory } from "react-router"
 
 
 
 
 const UserCard = ({props, title, image, likes, handleLikes, id, deletePicture, currentUserId}) => {
 
-  
+  const history = useHistory()
 
   return (
     <>
@@ -25,7 +26,7 @@ const UserCard = ({props, title, image, likes, handleLikes, id, deletePicture, c
     <Card.Text>
       {likes} 
     </Card.Text>
-    <Button variant="primary" onClick={() => deletePicture(id)}>Delete</Button>
+    <Button variant="primary" onClick={() => deletePicture(id, history)}>Delete</Button>
   </Card.Body>
 </Card>
 <br></br>

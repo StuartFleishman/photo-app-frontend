@@ -60,7 +60,9 @@ export const updateLikes = (picture) => {
   }
 }
 
-export const deletePicture = (id, history) => {
+export const deletePicture = (id) => {
+
+ 
   
   return (dispatch) => {
     const configObj = {
