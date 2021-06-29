@@ -6,8 +6,8 @@ class PictureShow extends Component {
 
   findPic() {
     const id = parseInt(this.props.routeData.match.params.id)
-    const picture = this.props.pictures.find(pic => pic.id == id)
-    return !!picture ? <div><img src={picture.image_url}/>{picture.title}</div> : <div>Error</div>
+    const picture = this.props.pictures.find(pic => pic.id == id ? pic : pic.message)
+    return !!picture ? <div><img src={picture.image_url}/>{picture.title}</div> : <div>Please select a category when creating a picture</div>
   }
 
   
@@ -15,7 +15,6 @@ class PictureShow extends Component {
   
     return (
       <div>
-        Here's your pic Dude!
         {this.findPic()}
       </div>
     )

@@ -111,6 +111,7 @@ class PicturesContainer extends Component {
 const mapStateToProps = (state) => {
  
   // const picArray = state.pictures.pictures.map( pic => pic )
+ 
   return {
     auth: state.auth,
     pictures: state.pictures,
