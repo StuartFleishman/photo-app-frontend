@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 import {fetchPictures, updateLikes} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
 import Picture from './Picture'
-import RatedCard from './ratedCard'
+import RatedCard from './RatedCard'
 import {fetchUsers} from '../actions/usersAction'
 
 
-class topRated extends Component {
+class TopRated extends Component {
 
   componentDidMount() {
     this.props.fetchPictures()
@@ -25,7 +25,7 @@ sortedArray = () => {
     return (
       <div>
         <ol>
-    {this.props.ratedPics.map(pic => <RatedCard users={this.props.users} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)}
+    {this.props.ratedPics.map(pic => <RatedCard categoryId={pic.category_id} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)}
        </ol>
       </div>
     )
@@ -50,4 +50,4 @@ const mapStateToProps = (state, ownProps) => {
 
 
 
-export default connect(mapStateToProps, {fetchCategories, fetchPictures, fetchUsers})(topRated)
+export default connect(mapStateToProps, {fetchCategories, fetchPictures, fetchUsers})(TopRated)

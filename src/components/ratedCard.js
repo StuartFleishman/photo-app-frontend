@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,30 +8,54 @@ import {
 } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
+import {fetchUsers} from '../actions/usersAction'
+import {fetchCategories} from '../actions/categoriesAction'
 
-const ratedCard = ({title, image, likes, handleLikes, id, likedPictures, currentUserId, userId, users}) => {
+class RatedCard extends Component {
 
- const renderName = () => {
-   
-   const userName = users.find(user => user.id === userId)
-   const name = userName.name
- return <div>{name}</div>
- }
+  componentDidMount() {
+    this.props.fetchUsers()
+    this.props.fetchCategories()
+  }
 
-  return (
-    <>
-<Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src={image} alt={title} height={200} width={200}/>
-  <Card.Body>
-  <Card.Title>{title} - by: {renderName()} </Card.Title>
-    <Card.Text>
-      Likes - {likes}
-    </Card.Text>
-  </Card.Body>
-</Card>
-<br></br>
-</>
-  )
+  renderUser = () => {
+    const user = this.props.users.find(user => user.id === this.props.userId)
+  return <div>{user.name}</div>
+  }
+
+  renderCategory = () => {
+    const category = this.props.categories.find(category => category.id === this.props.categoryId)
+  return <div>{category.name}</div>
+  }
+  
+  
+  render() {
+    return (
+      <div>
+        <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src={this.props.image}  height={200} width={200}/>
+        <Card.Body>
+        <Card.Title>{this.props.title} - by: {this.renderUser()} </Card.Title>
+          <Card.Text>
+            Likes - {this.props.likes}
+          </Card.Text>
+          <Card.Text>
+           Category  {this.renderCategory()}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+        <br></br>
+      </div>
+    )
+  }
 }
 
-export default ratedCard
+const mapStateToProps = state => {
+ 
+  return {
+    users: state.users,
+    categories: state.categories
+  }
+}
+
+export default connect(mapStateToProps, {fetchUsers, fetchCategories})(RatedCard)
