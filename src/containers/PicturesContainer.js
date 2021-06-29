@@ -15,6 +15,7 @@ import {createLikedPicture, updateLikedPicture, fetchLikedPictures} from '../act
 
 
 
+
 class PicturesContainer extends Component {
 
   state = {
@@ -99,7 +100,7 @@ class PicturesContainer extends Component {
                 // const picture = this.props.pictures.find(picture => picture.id === id)
                 // return !!picture ? <PictureShow picture={picture}/> : <div>404</div>
               
-              }/>
+              }/>  
         </Switch>
       </div>
     )

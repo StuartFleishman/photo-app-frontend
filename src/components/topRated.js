@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {fetchPictures, updateLikes} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
+import Picture from './Picture'
+import RatedCard from './ratedCard'
+
 
 class topRated extends Component {
 
@@ -20,7 +23,7 @@ sortedArray = () => {
     return (
       <div>
         <ol>
-    {this.props.ratedPics.map(pic => <li><img src={pic.image_url} height={200} width={200}/>{pic.title} - likes: {pic.likes}</li>)}
+    {this.props.ratedPics.map(pic => <RatedCard image={pic.image_url} title={pic.title} likes={pic.likes} />)}
        </ol>
       </div>
     )

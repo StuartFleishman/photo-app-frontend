@@ -14,7 +14,7 @@ import Home from './components/Home'
 import UserForm from './components/UserForm'
 import Login from './components/Login'
 import PictureForm from './components/PictureForm'
-import topRated from './components/topRated';
+import topRated from './components/TopRated';
 
 function App() {
   return (
