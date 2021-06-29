@@ -76,6 +76,7 @@ class PictureForm extends Component {
           <input onChange={this.handleImage} name="image_url" type="file" />
           <input type="submit" />
         </form>
+        {this.props.loading ? <h1>Loading</h1> : <h1>CREATE A PICTURE!!</h1>}
       </div>
     )
   }
@@ -85,7 +86,8 @@ const mapStateToProps = (state) => {
   return {
     auth: state.auth,
     categories: state.categories,
-    pictures: state.pictures
+    pictures: state.pictures,
+    loading: false
   }
 }
 

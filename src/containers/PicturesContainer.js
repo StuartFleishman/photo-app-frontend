@@ -73,9 +73,17 @@ class PicturesContainer extends Component {
   }
 
 
+  renderPictures = (id) => {
+    let pic = this.props.pictures.pictures
+
+    return pic.id === id ? <PictureShow picture={pic} /> : <div>404</div>
+  }
+
 
 
   render() {
+
+  
    
     return (
       <div>
@@ -88,8 +96,20 @@ class PicturesContainer extends Component {
           <Route path="/pictures/:id" render={(routeData) => {
             console.log(routeData)
             const id = parseInt(routeData.match.params.id)
-            const picture = this.props.pictures.find(pic => pic.id === id)
-          return !!picture ? <PictureShow picture={picture} /> : <div>404</div>
+            // this.renderPictures(id)
+            // const picture = this.props.pictures.find(pic => pic.id === id)
+            // const picture = this.props.pictures.pictures
+          //   // // picture.find(pic => pic.id == id)
+          //   const pictures = this.props.pictures.pictures
+          // let pictures = this.props.pictures.pictures
+ 
+          // const pic = pictures.find(p => p.id === id)
+         
+          const yo = this.props.pictures
+          const mo = yo.pictures
+          
+          // return !!pic ? <PictureShow picture={pic} /> : <div>404</div>
+          return !!mo.id === id  ? <PictureShow picture={mo} /> : <h1>error!!!</h1>
           }   
         }/>
         </Switch>
@@ -100,11 +120,13 @@ class PicturesContainer extends Component {
 
 
 const mapStateToProps = (state) => {
+  
   return {
     auth: state.auth,
     pictures: state.pictures,
     categories: state.categories,
-    likedPictures: state.likedPictures
+    likedPictures: state.likedPictures,
+    loading: state.loading
   }
 }
 

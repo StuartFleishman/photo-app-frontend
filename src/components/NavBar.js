@@ -33,7 +33,7 @@ class NavBar extends Component {
       <ReactBootStrap.Nav.Link as={Link} href="/users" to="/users" >Users</ReactBootStrap.Nav.Link>
     
       <ReactBootStrap.Nav.Link as={Link} href="/" to="/" >Home</ReactBootStrap.Nav.Link>
-      <ReactBootStrap.Nav.Link onClick={() => this.props.logoutUser()}  >Logout</ReactBootStrap.Nav.Link>
+      <ReactBootStrap.Nav.Link onClick={() => this.props.logoutUser()} as={Link} href="/" to="/"   >Logout</ReactBootStrap.Nav.Link>
       
       </>
       : 
@@ -46,7 +46,7 @@ class NavBar extends Component {
     </ReactBootStrap.Nav>
   </ReactBootStrap.Navbar.Collapse>
 </ReactBootStrap.Navbar>
-{/* <button onClick={() => this.props.logoutUser()} >Logout</button> */}
+
       </div>
     )
   }

@@ -11,7 +11,10 @@ class Home extends Component {
   }
 
   setUserPics() { 
-    return this.props.pictures.map(picture => picture.user_id === this.props.user.id ? <h1><img src={picture.image_url}/>{picture.title}</h1> : <h1></h1>)
+   
+    // const pic = this.props.pictures.pictures.map(picture => picture.user_id === this.props.user.id ? <h1><img src={picture.image_url}/>{picture.title}</h1> : <h1></h1>)
+    const picArray = this.props.pictures.pictures.map(pic => pic)
+    return picArray.map(picture => picture.user_id === this.props.user.id ? <h1><img src={picture.image_url}/>{picture.title}</h1> : <h1></h1>)
   }
 
 
@@ -32,9 +35,10 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
 
+  
   return {
     user: state.auth.currentUser,
-    pictures: state.pictures 
+    pictures: state.pictures
   }
 }
 

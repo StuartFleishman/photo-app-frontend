@@ -19,6 +19,7 @@ export const fetchPictures = () => {
 
 export const createPicture = (picture, history) => {
   return (dispatch) => {
+    dispatch({type: "LOADING"})
     const configObj = {
       method: 'POST',
       body: picture
