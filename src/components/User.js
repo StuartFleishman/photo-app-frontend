@@ -1,10 +1,16 @@
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-const User = ({name}) => {
+const User = ({name, id}) => {
   return (
     <div>
       <ul>
-      <li>{name}</li>
+      <Link to={`/users/${id}`}>{name}</Link>
       </ul>
     </div>
   )

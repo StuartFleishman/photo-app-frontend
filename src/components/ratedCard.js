@@ -13,14 +13,14 @@ import {fetchCategories} from '../actions/categoriesAction'
 
 class RatedCard extends Component {
 
-  componentDidMount() {
-    this.props.fetchUsers()
-    this.props.fetchCategories()
-  }
+  // componentDidMount() {
+  //   this.props.fetchUsers()
+  //   this.props.fetchCategories()
+  // }
 
   renderUser = () => {
     const user = this.props.users.find(user => user.id === this.props.userId)
-  return <div>{user.name}</div>
+  return !!user ? <div>{user.name}</div> : <div>fun</div>
   }
 
   renderCategory = () => {
@@ -35,12 +35,16 @@ class RatedCard extends Component {
         <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={this.props.image}  height={200} width={200}/>
         <Card.Body>
-        <Card.Title>{this.props.title} - by: {this.renderUser()} </Card.Title>
+        {/* <Card.Title>{this.props.title} - by: {this.renderUser()} </Card.Title> */}
           <Card.Text>
             Likes - {this.props.likes}
           </Card.Text>
           <Card.Text>
-           Category  {this.renderCategory()}
+          {this.props.title} <b>by:</b>
+          {this.renderUser()}
+          </Card.Text>
+          <Card.Text>
+            category: {this.renderCategory()}
           </Card.Text>
         </Card.Body>
       </Card>
@@ -51,10 +55,12 @@ class RatedCard extends Component {
 }
 
 const mapStateToProps = state => {
+
  
   return {
     users: state.users,
-    categories: state.categories
+    categories: state.categories,
+    pictures: state.pictures
   }
 }
 

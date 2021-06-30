@@ -26,13 +26,14 @@ class NavBar extends Component {
    
       {this.props.loggedIn ?  
         <>
+        <ReactBootStrap.Nav.Link as={Link} href="/" to="/" >Home</ReactBootStrap.Nav.Link>
       <ReactBootStrap.Nav.Link as={Link} href="/toprated" to="/toprated" >Top Rated</ReactBootStrap.Nav.Link> 
       <ReactBootStrap.Nav.Link as={Link} href="/pictures" to="/pictures" >Pictures</ReactBootStrap.Nav.Link>
       
       <ReactBootStrap.Nav.Link as={Link} href="/pictures/new" to="/pictures/new" >Create A Picture</ReactBootStrap.Nav.Link>
       <ReactBootStrap.Nav.Link as={Link} href="/users" to="/users" >Users</ReactBootStrap.Nav.Link>
     
-      <ReactBootStrap.Nav.Link as={Link} href="/" to="/" >Home</ReactBootStrap.Nav.Link>
+     
       <ReactBootStrap.Nav.Link onClick={() => this.props.logoutUser()} as={Link} href="/" to="/"   >Logout</ReactBootStrap.Nav.Link>
       
       </>

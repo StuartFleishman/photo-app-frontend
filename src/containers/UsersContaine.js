@@ -12,42 +12,14 @@ import {
 } from "react-router-dom";
 import User from '../components/User'
 import UserShow from '../components/UserShow'
-import {fetchPictures, updateLikes} from '../actions/picturesAction'
 
 
 
 class UsersContainer extends Component {
 
-  state = {
-    users: [],
-    pictures: []
-  }
-
-  handleLikes = id => {
-    const pictureObj = this.props.pictures.find(pic => pic.id === id)
-   
-
-    const pObj = {...pictureObj, likes: pictureObj.likes + 1}
-    this.props.updateLikes(pObj)
-
-    const pictures = this.state.pictures.map(pic => {
-        if (pic.id === id) {
-            return {...pic, likes: pic.likes + 1}
-        } else {
-            return pic
-        }
-        })
-    this.setState({
-        pictures: pictures
-    })
-
-  }
-
-
 
   componentDidMount() {
     this.props.fetchUsers()
-    this.props.fetchPictures()
   }
 
 
@@ -66,7 +38,7 @@ class UsersContainer extends Component {
                 const user= this.props.users.find(user => user.id === id)
               
               
-                return !!user ? <UserShow handleLikes={this.handleLikes} pictures={this.props.pictures} routeData={routeData} user={user} /> : <div>404</div>
+                return !!user ? <UserShow pictures={this.props.pictures} routeData={routeData} user={user} /> : <div>404</div>
               }
               }/>  
         </Switch>
@@ -84,4 +56,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchUsers, fetchPictures, updateLikes})(UsersContainer)
+export default connect(mapStateToProps, {fetchUsers})(UsersContainer)

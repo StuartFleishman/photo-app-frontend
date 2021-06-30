@@ -24,7 +24,7 @@ function App() {
     <Switch>
        <Route exact path="/" component={Home} />
        <Route path="/signup" component={UserForm} />
-       <Route path="/users" component={UsersContainer} />
+       <Route path="/users" component={(routeInfo) => <UsersContainer routeData={routeInfo} />} />
        <Route path="/pictures/new" component={PictureForm} />
        <Route path="/pictures" component={(routeInfo) => <PicturesContainer routeData={routeInfo} />} />
        <Route path="/login" component={Login} />

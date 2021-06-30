@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import {createUser} from '../actions/usersAction'
 import {connect} from 'react-redux'
+import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 
 class UserForm extends Component {
@@ -33,22 +36,43 @@ class UserForm extends Component {
   render() {
     const renderError = this.props.auth.message.map(m=> <h1>{m}</h1>)
     return(
-      <form onSubmit={this.handleSubmit}>
-        <label >UserName:</label>
-        <input onChange={this.handleChange} type="text" name="name" value={this.state.name} />
-        <br />
-        <label>Email:</label>
-        <input onChange={this.handleChange} type="email" name="email" value={this.state.email} />
-        <br />
-        <label>Password:</label>
-        <input onChange={this.handleChange} type="password" name="password" value={this.state.password} />
-        <br />
-        <label>Confrim Password</label>
-        <input onChange={this.handleChange} type="password" name="password_confirmation" value={this.state.password_confirmation} />
-        <br />
-        <input type="submit" value="signup" />
-        {this.props.auth.message.map((m, idx)=> <h1 key={idx}>{m}</h1>)}
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+  <Form.Row>
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label>User Name:</Form.Label>
+      <Form.Control onChange={this.handleChange} value={this.state.title} name="name" type="text" placeholder="Enter Name" />
+    </Form.Group>
+    </Form.Row>
+
+    <Form.Row>
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label>Email:</Form.Label>
+      <Form.Control onChange={this.handleChange} value={this.state.title} name="email" type="email" placeholder="Enter Email" />
+    </Form.Group>
+    </Form.Row>
+
+    <Form.Row>
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label>Password:</Form.Label>
+      <Form.Control onChange={this.handleChange} value={this.state.title} name="password" type="password" placeholder="Enter Password" />
+    </Form.Group>
+    </Form.Row>
+
+    <Form.Row>
+    <Form.Group as={Col} controlId="formGridEmail">
+      <Form.Label>Password Confirmation:</Form.Label>
+      <Form.Control onChange={this.handleChange} value={this.state.title} name="password_confirmation" type="password" placeholder="Enter Password Confirmation" />
+    </Form.Group>
+    </Form.Row>
+
+
+
+
+  <Button variant="primary" type="submit">
+    Submit
+  </Button>
+  {this.props.auth.message.map((m, idx)=> <h1 key={idx}>{m}</h1>)}
+</Form>
     )
   }
 

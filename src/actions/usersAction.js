@@ -57,7 +57,7 @@ export const createUser = (user, history) => {
       dispatch({
         type: 'AUTH_SUCCESSFUL', payload: {loggedIn: data.logged_in, currentUser: data.user }
       })
-      history.push('/')
+      history.push('/pictures/new')
     }
     })
   }
@@ -85,7 +85,7 @@ export const login = (user, history) => {
       dispatch({
         type: 'AUTH_SUCCESSFUL', payload: {loggedIn: data.logged_in, currentUser: data.user }
       })
-      history.push('/')
+      history.push('/pictures/new')
     }
     })
     .catch(error => {
