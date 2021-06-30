@@ -7,6 +7,7 @@ import Pictures from './Pictures'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
 class PictureForm extends Component {
 
@@ -72,6 +73,7 @@ class PictureForm extends Component {
   
   render() {
     return (
+      <Container>
 <Form onSubmit={this.handleSubmit}>
   <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
@@ -109,6 +111,7 @@ class PictureForm extends Component {
     Submit
   </Button>
 </Form>
+</Container>
     )
   }
 }

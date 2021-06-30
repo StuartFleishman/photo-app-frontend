@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
 
 class UserForm extends Component {
@@ -36,6 +37,7 @@ class UserForm extends Component {
   render() {
     const renderError = this.props.auth.message.map(m=> <h1>{m}</h1>)
     return(
+      <Container >
       <Form onSubmit={this.handleSubmit}>
   <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
@@ -73,6 +75,7 @@ class UserForm extends Component {
   </Button>
   {this.props.auth.message.map((m, idx)=> <h1 key={idx}>{m}</h1>)}
 </Form>
+</Container>
     )
   }
 

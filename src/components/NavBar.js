@@ -18,7 +18,7 @@ class NavBar extends Component {
     return (
       <div>
         <ReactBootStrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  <ReactBootStrap.Navbar.Brand href="#home">Stu's Photo App</ReactBootStrap.Navbar.Brand>
+  <ReactBootStrap.Navbar.Brand > {this.props.user.name}</ReactBootStrap.Navbar.Brand>
   <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
     <ReactBootStrap.Nav className="mr-auto">
@@ -56,7 +56,8 @@ class NavBar extends Component {
 const mapStateToProps = state => {
 
   return {
-    loggedIn: state.auth.loggedIn
+    loggedIn: state.auth.loggedIn,
+    user: state.auth.currentUser
   }
 }
 
