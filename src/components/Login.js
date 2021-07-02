@@ -33,8 +33,12 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props.error)
+    
     return(
+      <div>
+        <br></br>
+        <br></br>
+        <br></br>
       <form onSubmit={this.handleSubmit}>
         <label >UserName:</label>
         <input onChange={this.handleChange} type="text" name="name" value={this.state.name} />
@@ -48,6 +52,7 @@ class Login extends Component {
         <input type="submit" value="login" />
        {!this.props.auth.error ? <h1>Please Log In</h1> : <h1>Please Try Again</h1>}
       </form>
+      </div>
       
     )
   }

@@ -11,6 +11,4 @@ export const fetchCategories = () => {
       dispatch(setCategories(categories))
     })
   }
-
-
 }

@@ -18,7 +18,7 @@ const UserShow = (props) => {
 
   return (
     <div>
-      {props.user.name}
+      <h1>{props.user.name}'s collection</h1>
       {renderUserPics()}
     </div>
   )

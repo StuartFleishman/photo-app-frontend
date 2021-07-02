@@ -38,6 +38,9 @@ class UserForm extends Component {
     const renderError = this.props.auth.message.map(m=> <h1>{m}</h1>)
     return(
       <Container >
+        <br></br>
+        <br></br>
+        <br></br>
       <Form onSubmit={this.handleSubmit}>
   <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">

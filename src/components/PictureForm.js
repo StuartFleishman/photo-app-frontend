@@ -73,45 +73,37 @@ class PictureForm extends Component {
   
   render() {
     return (
-      <Container>
-<Form onSubmit={this.handleSubmit}>
-  <Form.Row>
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label>Picture Title:</Form.Label>
-      <Form.Control onChange={this.handleChange} value={this.state.title} name="title" type="text" placeholder="Enter title" />
-    </Form.Group>
-    </Form.Row>
-    <Form.Row>
+      <div>
+        <br></br>
+        <br></br>
+        <br></br>
+    <Form onSubmit={this.handleSubmit}>
+        <Form.Row>
+        <Form.Group as={Col} controlId="formGridEmail">
+          <Form.Label>Picture Title:</Form.Label>
+          <Form.Control onChange={this.handleChange} value={this.state.title} name="title" type="text" placeholder="Enter title" />
+        </Form.Group>
+        </Form.Row>
+        <Form.Row>
 
-    <Form.Group as={Col} >
-      <Form.Control onChange={this.handleImage} name="image_url" type="file" />
-    </Form.Group>
-  </Form.Row>
-
-
-
-
-  <Form.Row>
- 
-
-    <Form.Group as={Col} controlId="formGridState">
-      <Form.Label>Category</Form.Label>
-      <Form.Control onChange={this.hanldeCategoryId} as="select" defaultValue="Choose...">
-      <option value="">Please Select Category</option>
-          {this.renderCategories()}
-      </Form.Control>
-    </Form.Group>
-
-   
-  </Form.Row>
-
-
-
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
-</Container>
+        <Form.Group as={Col} >
+          <Form.Control onChange={this.handleImage} name="image_url" type="file" />
+        </Form.Group>
+      </Form.Row>
+      <Form.Row>
+        <Form.Group as={Col} controlId="formGridState">
+          <Form.Label>Category</Form.Label>
+          <Form.Control onChange={this.hanldeCategoryId} as="select" defaultValue="Choose...">
+          <option value="">Please Select Category</option>
+              {this.renderCategories()}
+          </Form.Control>
+        </Form.Group>
+      </Form.Row>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+    </Form>
+  </div>
     )
   }
 }

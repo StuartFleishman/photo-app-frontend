@@ -15,6 +15,9 @@ const Pictures = ({pictures, handleLikes, hanldeFilterCategories, categories, li
   return (
 
     <div className="browser-default">
+      <br></br>
+      <br></br>
+      <br></br>
       <select onChange={hanldeFilterCategories}>
           <option value="">Picture Categories</option>
           {renderCategories()}

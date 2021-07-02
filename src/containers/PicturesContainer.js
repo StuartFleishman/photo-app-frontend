@@ -11,7 +11,7 @@ import {
   Link
 } from "react-router-dom";
 import PictureShow from '../components/PictureShow'
-import {createLikedPicture, updateLikedPicture, fetchLikedPictures} from '../actions/likedPicturesAction'
+
 
 
 
@@ -26,7 +26,6 @@ class PicturesContainer extends Component {
   componentDidMount() {
     this.props.fetchPictures()
     this.props.fetchCategories()
-    this.props.fetchLikedPictures()
   }
 
   hanldeFilterCategories = (event) => {
@@ -121,4 +120,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchPictures, fetchCategories, updateLikes, createLikedPicture, updateLikedPicture, fetchLikedPictures})(PicturesContainer)
+export default connect(mapStateToProps, {fetchPictures, fetchCategories, updateLikes})(PicturesContainer)

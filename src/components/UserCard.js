@@ -22,7 +22,7 @@ const UserCard = ({props, title, image, likes, handleLikes, id, deletePicture, c
   <Card.Img variant="top" src={image} alt={title} height={200} width={200}/>
   <Card.Body>
   
-    <Link to={`/pictures/${id}`}>{title}</Link>
+    {title}
     <Card.Text>
       {likes} 
     </Card.Text>
