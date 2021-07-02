@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {fetchPictures, updateLikes} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
+import Picture from './Picture'
 import RatedCard from './RatedCard'
 import {fetchUsers} from '../actions/usersAction'
 
@@ -14,7 +15,9 @@ class TopRated extends Component {
     this.props.fetchUsers()
   }
   
-
+sortedArray = () => {
+  return this.props.pictures.sort((a, b) => b.likes - a.likes) 
+}
   
   render() {
   
@@ -22,14 +25,14 @@ class TopRated extends Component {
     return (
       <div>
         <ol>
-    {this.props.ratedPics.map(pic => <RatedCard categories={this.props.categories} users={this.props.users} categoryId={pic.category_id} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)}
+    {this.props.ratedPics.map(pic => <RatedCard users={this.props.users} categoryId={pic.category_id} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)}
        </ol>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 
   const ratedPics = state.pictures.sort((a, b) => b.likes - a.likes)
 

@@ -27,7 +27,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        {this.props.loggedIn ? <h1>{this.props.user.name}'s Collection</h1> : <h1>Log in or Sign up</h1> }
+        {this.props.auth.loggedIn ? <h1>{this.props.user.name}'s Collection</h1> : <h1>Log in or Sign up</h1> }
+        {this.props.user.name ? <h1>{this.props.user.name}'s Collection</h1> : <h1>Log in or Sign up</h1>}
         {this.setUserPics()}
       </div>
     )
@@ -35,12 +36,12 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-
+ 
   
   return {
     user: state.auth.currentUser,
     pictures: state.pictures,
-    loggedIn: state.auth.loggedIn
+    auth: state.auth
   }
 }
 

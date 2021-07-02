@@ -6,6 +6,7 @@ import Picture from './Picture'
 const UserShow = (props) => {
 
   const renderUserPics = () => {
+    
   
     const id = parseInt(props.routeData.match.params.id)
     const userPics = props.pictures.filter(pic => pic.user_id === id)
@@ -18,6 +19,7 @@ const UserShow = (props) => {
 
   return (
     <div>
+      <h1>{props.user.name}'s collection</h1>
       <h1>{props.user.name}'s collection</h1>
       {renderUserPics()}
     </div>

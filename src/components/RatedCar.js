@@ -1,20 +1,31 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Card from 'react-bootstrap/Card';
-
-
+import Button from 'react-bootstrap/Button'
+import {fetchUsers} from '../actions/usersAction'
+import {fetchCategories} from '../actions/categoriesAction'
 
 class RatedCard extends Component {
 
-
+  // componentDidMount() {
+  //   this.props.fetchUsers()
+  //   this.props.fetchCategories()
+  // }
 
   renderUser = () => {
     const user = this.props.users.find(user => user.id === this.props.userId)
-    return !!user ? <div>{user.name}</div> : <div>404</div>
+  return !!user ? <div>{user.name}</div> : <div>fun</div>
   }
 
   renderCategory = () => {
     const category = this.props.categories.find(category => category.id === this.props.categoryId)
-    return <div>{category.name}</div>
+  return <div>{category.name}</div>
   }
   
   
@@ -32,7 +43,7 @@ class RatedCard extends Component {
           </Card.Text>
           <Card.Text>
           {this.props.title} <b>by:</b>
-          <h1>{this.renderUser()}</h1>
+          {this.renderUser()}
           </Card.Text>
           <Card.Text>
             category: {this.renderCategory()}
@@ -45,7 +56,14 @@ class RatedCard extends Component {
   }
 }
 
+const mapStateToProps = state => {
 
+ 
+  return {
+    users: state.users,
+    categories: state.categories,
+    pictures: state.pictures
+  }
+}
 
-
-export default RatedCard
+export default connect(mapStateToProps, {fetchUsers, fetchCategories})(RatedCard)

@@ -41,20 +41,10 @@ class PicturesContainer extends Component {
 
   handleLikes = id => {
 
-    
     const pictureObj = this.state.pictures.find(pic => pic.id === id)
-   
-    
-    //create a liked_pictures on backend
-    // const picId = pictureObj.id
-    // const ids = {picture_id: picId, user_id: this.props.auth.currentUser.id}
-    // this.props.createLikedPicture(ids)
-    
-   //update likes on backend
     const pObj = {...pictureObj, likes: pictureObj.likes + 1}
     this.props.updateLikes(pObj)
 
-    //update state to show likes to users
     const pictures = this.state.pictures.map(pic => {
         if (pic.id === id) {
             return {...pic, likes: pic.likes + 1}
@@ -68,16 +58,15 @@ class PicturesContainer extends Component {
 
   }
 
-  renderCategories = () => {
-    return this.props.categories.map(category => <option key={category.id} value={category.id} name={category.id}>{category.name}</option>)
-  }
+  // renderCategories = () => {
+  //   return this.props.categories.map(category => <option key={category.id} value={category.id} name={category.id}>{category.name}</option>)
+  // }
 
 
-  renderPictures = (id) => {
-    let pic = this.props.pictures.pictures
-
-    return pic.id === id ? <PictureShow picture={pic} /> : <div>404</div>
-  }
+  // renderPictures = (id) => {
+  //   let pic = this.props.pictures.pictures
+  //   return pic.id === id ? <PictureShow picture={pic} /> : <div>404</div>
+  // }
 
 
 
