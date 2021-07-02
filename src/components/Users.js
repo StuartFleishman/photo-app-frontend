@@ -3,7 +3,7 @@ import User from './User'
 
 const Users = ({users}) => (
   <div>
-    {users.map(user => <User id={user.id} key={user.id} name={user.name} />)}
+    {users.map(user => <User key={user.id} id={user.id} key={user.id} name={user.name} />)}
   </div>
 )
 

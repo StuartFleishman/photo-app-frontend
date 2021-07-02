@@ -11,6 +11,9 @@ class PictureShow extends Component {
     return !!picture ? 
     <div>
       <div>
+        <br></br>
+        <br></br>
+        <br></br>
       <img src={picture.image_url}/>
       </div>
       <br/>

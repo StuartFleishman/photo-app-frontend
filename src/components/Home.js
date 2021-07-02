@@ -18,7 +18,7 @@ class Home extends Component {
 
    
     const picArray = this.props.pictures.map(pic => pic)
-    return picArray.map(picture => picture.user_id === this.props.user.id ? <UserCard id={picture.id} image={picture.image_url} title={picture.title} deletePicture={this.props.deletePicture} /> : <h1></h1>)
+    return picArray.map(picture => picture.user_id === this.props.user.id ? <UserCard key={picture.id} id={picture.id} image={picture.image_url} title={picture.title} deletePicture={this.props.deletePicture} /> : <h1></h1>)
   }
 
 

@@ -1,6 +1,7 @@
 import Picture from './Picture'
 import React, { Component } from 'react'
 import CardColumns from 'react-bootstrap/CardColumns';
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 
 const Pictures = ({pictures, handleLikes, hanldeFilterCategories, categories, likedPictures, currentUserId}) => {
@@ -20,15 +21,16 @@ const Pictures = ({pictures, handleLikes, hanldeFilterCategories, categories, li
       <br></br>
       <br></br>
       <select onChange={hanldeFilterCategories}>
-          <option value="">Picture Categories</option>
+          <option value="">Filter Picture Categories</option>
           {renderCategories()}
         </select>
-    
-      <ul>
+      <br></br>
+      <br></br>
+      <br></br>
         <CardColumns>
-      {pictures.map(picture => <Picture currentUserId={currentUserId} likedPictures={likedPictures} id={picture.id} handleLikes={handleLikes} category={picture.category_id} key={picture.id} title={picture.title} image={picture.image_url} likes={picture.likes} />)}
+      {pictures.map(picture => <Picture key={picture.id} currentUserId={currentUserId} likedPictures={likedPictures} id={picture.id} handleLikes={handleLikes} category={picture.category_id} key={picture.id} title={picture.title} image={picture.image_url} likes={picture.likes} />)}
       </CardColumns>
-      </ul>
+      
     </div>
   )
 }

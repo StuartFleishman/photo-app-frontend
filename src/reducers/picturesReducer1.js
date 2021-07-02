@@ -12,7 +12,7 @@ export default function picturesReducer(state = {pictures: [], loading: false}, 
       return [...state, {filterCat: state.filter(picture => picture.id === action.payload)}]
     }
     case 'INCREMENT_LIKE': 
-     
+     //save to variable then spread 
       return state.pictures.map(picture => {
         if(picture.id === action.id) {
           return {

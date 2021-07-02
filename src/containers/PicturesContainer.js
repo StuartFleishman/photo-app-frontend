@@ -19,7 +19,7 @@ import PictureShow from '../components/PictureShow'
 class PicturesContainer extends Component {
 
   state = {
-    pictures: []
+    pictures: this.props.pictures
   }
 
 
@@ -57,17 +57,6 @@ class PicturesContainer extends Component {
     })
 
   }
-
-  // renderCategories = () => {
-  //   return this.props.categories.map(category => <option key={category.id} value={category.id} name={category.id}>{category.name}</option>)
-  // }
-
-
-  // renderPictures = (id) => {
-  //   let pic = this.props.pictures.pictures
-  //   return pic.id === id ? <PictureShow picture={pic} /> : <div>404</div>
-  // }
-
 
 
   render() {

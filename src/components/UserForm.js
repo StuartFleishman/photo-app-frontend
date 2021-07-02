@@ -25,17 +25,19 @@ class UserForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.createUser(this.state, this.props.history)
+
     this.setState({
       name: "",
       email: "",
       password: "",
-      password_confirmation: ''
+      password_confirmation: ""
     })
+    
   }
 
 
   render() {
-    const renderError = this.props.auth.message.map(m=> <h1>{m}</h1>)
+   
     return(
       <Container >
         <br></br>
@@ -45,28 +47,28 @@ class UserForm extends Component {
   <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>User Name:</Form.Label>
-      <Form.Control onChange={this.handleChange} value={this.state.title} name="name" type="text" placeholder="Enter Name" />
+      <Form.Control onChange={this.handleChange} value={this.state.name} name="name" type="text" placeholder="Enter Name" />
     </Form.Group>
     </Form.Row>
 
     <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Email:</Form.Label>
-      <Form.Control onChange={this.handleChange} value={this.state.title} name="email" type="email" placeholder="Enter Email" />
+      <Form.Control onChange={this.handleChange} value={this.state.email} name="email" type="email" placeholder="Enter Email" />
     </Form.Group>
     </Form.Row>
 
     <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Password:</Form.Label>
-      <Form.Control onChange={this.handleChange} value={this.state.title} name="password" type="password" placeholder="Enter Password" />
+      <Form.Control onChange={this.handleChange} value={this.state.password} name="password" type="password" placeholder="Enter Password" />
     </Form.Group>
     </Form.Row>
 
     <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Password Confirmation:</Form.Label>
-      <Form.Control onChange={this.handleChange} value={this.state.title} name="password_confirmation" type="password" placeholder="Enter Password Confirmation" />
+      <Form.Control onChange={this.handleChange} value={this.state.password_confirmation} name="password_confirmation" type="password" placeholder="Enter Password Confirmation" />
     </Form.Group>
     </Form.Row>
 

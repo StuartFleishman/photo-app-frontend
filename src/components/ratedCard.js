@@ -24,7 +24,7 @@ class RatedCard extends Component {
         <br></br>
         <br></br>
         <br></br>
-        <Card style={{ width: '18rem' }}>
+        <Card className="mx-auto" style={{ width: '18rem' }}>
         <Card.Img variant="top" src={this.props.image}  height={200} width={200}/>
         <Card.Body>
           <Card.Text>
