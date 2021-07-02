@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {fetchPictures, updateLikes} from '../actions/picturesAction'
+import {fetchPictures} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
+
 import RatedCard from './RatedCard'
 import {fetchUsers} from '../actions/usersAction'
 
@@ -22,7 +23,7 @@ class TopRated extends Component {
     return (
       <div>
         <ol>
-    {this.props.ratedPics.map(pic => <RatedCard categories={this.props.categories} users={this.props.users} categoryId={pic.category_id} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)}
+    {this.props.ratedPics.map(pic => <RatedCard users={this.props.users} categories={this.props.categories} categoryId={pic.category_id} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)}
        </ol>
       </div>
     )
@@ -35,7 +36,6 @@ const mapStateToProps = (state) => {
 
 
   return {
-    auth: state.auth,
     users: state.users,
     pictures: state.pictures,
     categories: state.categories,

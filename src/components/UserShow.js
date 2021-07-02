@@ -1,5 +1,6 @@
 import React from 'react'
 import Picture from './Picture'
+import CardColumns from 'react-bootstrap/CardColumns'
 
 
 
@@ -21,7 +22,9 @@ const UserShow = (props) => {
     <div>
       <h1>{props.user.name}'s collection</h1>
       <h1>{props.user.name}'s collection</h1>
+      <CardColumns>
       {renderUserPics()}
+      </CardColumns>
     </div>
   )
 }

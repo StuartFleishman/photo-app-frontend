@@ -1,5 +1,6 @@
 import Picture from './Picture'
 import React, { Component } from 'react'
+import CardColumns from 'react-bootstrap/CardColumns';
 
 
 const Pictures = ({pictures, handleLikes, hanldeFilterCategories, categories, likedPictures, currentUserId}) => {
@@ -24,7 +25,9 @@ const Pictures = ({pictures, handleLikes, hanldeFilterCategories, categories, li
         </select>
     
       <ul>
+        <CardColumns>
       {pictures.map(picture => <Picture currentUserId={currentUserId} likedPictures={likedPictures} id={picture.id} handleLikes={handleLikes} category={picture.category_id} key={picture.id} title={picture.title} image={picture.image_url} likes={picture.likes} />)}
+      </CardColumns>
       </ul>
     </div>
   )
