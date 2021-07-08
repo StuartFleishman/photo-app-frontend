@@ -1,51 +1,42 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Card from 'react-bootstrap/Card';
 
+const RatedCard = (props) => {
 
-
-class RatedCard extends Component {
-
-
-
-  renderUser = () => {
-    const user = this.props.users.find(user => user.id === this.props.userId)
+  const renderUser = () => {
+    const user = props.users.find(user => user.id === props.userId)
     return !!user ? <div>{user.name}</div> : <div>404</div>
   }
 
-  renderCategory = () => {
-    const category = this.props.categories.find(category => category.id === this.props.categoryId)
+  const renderCategory = () => {
+    const category = props.categories.find(category => category.id === props.categoryId)
     return <div>{category.name}</div>
   }
-  
-  
-  render() {
-    return (
-      <div>
+
+
+  return (
+    <div>
         <br></br>
         <br></br>
         <br></br>
         <Card className="mx-auto" style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={this.props.image}  height={200} width={200}/>
+        <Card.Img variant="top" src={props.image}  height={200} width={200}/>
         <Card.Body>
           <Card.Text>
-            Likes - {this.props.likes}
+            Likes - {props.likes}
           </Card.Text>
           <Card.Text>
-          {this.props.title} <b>by:</b>
-          <h1>{this.renderUser()}</h1>
+          {props.title} <b>by:</b>
+          <h1>{renderUser()}</h1>
           </Card.Text>
           <Card.Text>
-            category: {this.renderCategory()}
+            category: {renderCategory()}
           </Card.Text>
         </Card.Body>
       </Card>
         <br></br>
-      </div>
-    )
-  }
+    </div>
+  )
 }
-
-
-
 
 export default RatedCard

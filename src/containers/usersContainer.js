@@ -2,15 +2,12 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {fetchUsers} from '../actions/usersAction'
 import Users from '../components/Users'
-// import UserForm from '../components/UserForm'
-// import Login from '../components/Login'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-// import User from '../components/User'
 import UserShow from '../components/UserShow'
 import {fetchPictures, updateLikes} from '../actions/picturesAction'
 
@@ -30,15 +27,15 @@ class UsersContainer extends Component {
     const pObj = {...pictureObj, likes: pictureObj.likes + 1}
     this.props.updateLikes(pObj)
 
-    const pictures = this.state.pictures.map(pic => {
+    this.setState((prevState) => {
+      const newPictureState = prevState.pictures.map(pic => {
         if (pic.id === id) {
             return {...pic, likes: pic.likes + 1}
         } else {
             return pic
         }
         })
-    this.setState({
-        pictures: pictures
+        return {pictures: newPictureState}
     })
 
   }
@@ -77,7 +74,7 @@ class UsersContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-  console.log(state)
+
   return {
     users: state.users,
     pictures: state.pictures

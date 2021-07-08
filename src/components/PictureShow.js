@@ -1,45 +1,33 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import UserCard from './UserCard'
+import React from 'react'
+import Card from 'react-bootstrap/Card';
 
 
-class PictureShow extends Component {
-
-  findPic() {
-    const id = parseInt(this.props.routeData.match.params.id)
-    const picture = this.props.pictures.find(pic => pic.id == id ? pic : pic.message)
+const PictureShow = ({routeData, pictures}) => {
+  
+  const findPic = () => {
+    const id = parseInt(routeData.match.params.id)
+    const picture = pictures.find(pic => pic.id == id ? pic : pic.message)
     return !!picture ? 
-    <div>
-      <div>
-        <br></br>
-        <br></br>
-        <br></br>
-      <img src={picture.image_url}/>
-      </div>
-      <br/>
-    {picture.title}
-    </div> 
+    <Card className="mx-auto" style={{ width: '18rem' }}>
+    <Card.Img variant="top" src={picture.image_url} alt={picture.title} height={200} width={200} />
+    <Card.Body>
+      <Card.Title>{picture.title}</Card.Title>
+    </Card.Body>
+    </Card>
     : <div>Please select a category & picture title when creating a picture</div>
   }
 
+ 
   
-  render() {
-  
-    return (
-      <div>
-        {this.findPic()}
-      </div>
-    )
-  }
+  return (
+    
+    <div>
+      <br></br>
+      <br></br>
+      <br></br>
+      {findPic()}
+    </div>
+  )
 }
 
-const mapState = state => {
-
-  
-
-  return {
-    pictures: state.pictures
-  }
-}
-
-export default connect(mapState)(PictureShow)
+export default PictureShow

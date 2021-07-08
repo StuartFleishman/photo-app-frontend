@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {fetchPictures, updateLikes} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
 import Pictures from '../components/Pictures'
-import PictureForm from '../components/PictureForm'
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,9 +10,6 @@ import {
   Link
 } from "react-router-dom";
 import PictureShow from '../components/PictureShow'
-
-
-
 
 
 class PicturesContainer extends Component {
@@ -45,15 +41,16 @@ class PicturesContainer extends Component {
     const pObj = {...pictureObj, likes: pictureObj.likes + 1}
     this.props.updateLikes(pObj)
 
-    const pictures = this.state.pictures.map(pic => {
+ 
+    this.setState((prevState) => {
+      const newPictureState = prevState.pictures.map(pic => {
         if (pic.id === id) {
             return {...pic, likes: pic.likes + 1}
         } else {
             return pic
         }
         })
-    this.setState({
-        pictures: pictures
+        return {pictures: newPictureState}
     })
 
   }
@@ -61,22 +58,13 @@ class PicturesContainer extends Component {
 
   render() {
 
-  
-   
     return (
       <div>
-        
-       
         <Switch>
           <Route exact path="/pictures">
-              <Pictures currentUserId={this.props.auth.currentUser.id} likedPictures={this.props.likedPictures} categories={this.props.categories} hanldeFilterCategories={this.hanldeFilterCategories} pictures={this.state.pictures} handleLikes={this.handleLikes} />
+              <Pictures categories={this.props.categories} hanldeFilterCategories={this.hanldeFilterCategories} pictures={this.state.pictures} handleLikes={this.handleLikes} />
           </Route>
-              <Route path="/pictures/:id" component={(routeData) => <PictureShow routeData={routeData} />
-               
-                // const id = parseInt(routeData.match.params)
-                // const picture = this.props.pictures.find(picture => picture.id === id)
-                // return !!picture ? <PictureShow picture={picture}/> : <div>404</div>
-              
+              <Route path="/pictures/:id" component={(routeData) => <PictureShow pictures={this.props.pictures} routeData={routeData} />
               }/>  
         </Switch>
       </div>
@@ -87,14 +75,10 @@ class PicturesContainer extends Component {
 
 const mapStateToProps = (state) => {
  
-  // const picArray = state.pictures.pictures.map( pic => pic )
- 
   return {
     auth: state.auth,
     pictures: state.pictures,
     categories: state.categories,
-    likedPictures: state.likedPictures,
-    loading: state.loading
   }
 }
 

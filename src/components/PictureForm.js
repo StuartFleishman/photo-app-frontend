@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import {createPicture} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
 import {connect} from 'react-redux'
-import CategoriesContainer from '../containers/CategoriesContainer'
-import Pictures from './Pictures'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
@@ -25,19 +23,19 @@ class PictureForm extends Component {
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-    }, () => console.log(this.state))
+    })
   }
 
   hanldeCategoryId = (event) => {
     this.setState({
       category_id: parseInt(event.target.value)
-    }, () => console.log(this.state))
+    })
   }
 
   handleImage = (event) => {
     this.setState({
       image_url: event.target.files[0]
-    }, () => console.log(this.state))
+    })
   }
   
   
@@ -65,10 +63,10 @@ class PictureForm extends Component {
   }
 
 
-  filterPicCategories = (event) => {
-    const category_id = parseInt(event.target.value)
-    const v =this.state.pictures.filter
-  }
+  // filterPicCategories = (event) => {
+  //   const category_id = parseInt(event.target.value)
+  //   const v =this.state.pictures.filter
+  // }
 
   
   render() {
