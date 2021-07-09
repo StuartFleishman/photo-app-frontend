@@ -11,11 +11,6 @@ class Home extends Component {
     this.props.fetchPictures()
   }
 
-  // setUserPics() { 
-  //   const picArray = this.props.pictures.map(pic => pic)
-  //   return picArray.map(picture => picture.user_id === this.props.user.id ? <UserCard key={picture.id} id={picture.id} image={picture.image_url} title={picture.title} deletePicture={this.props.deletePicture} /> : <h1></h1>)
-  // }
-
   setUserPics() { 
     const picArray = this.props.pictures.map(pic => pic)
     const userPics = picArray.filter(picture => picture.user_id === this.props.user.id )
@@ -30,7 +25,6 @@ class Home extends Component {
         <br></br>
         <br></br>
         {this.props.auth.loggedIn ? <h1> {this.props.user.name} 's Collection </h1> : <h1>Log in or Sign up</h1> }
-        {/* {this.props.user.name ? <h1>{this.props.user.name}'s Collection</h1> : <h1>Log in or Sign up</h1>} */}
         <CardColumns>
         {this.setUserPics()}
         </CardColumns>
@@ -40,8 +34,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
- 
-  
   return {
     user: state.auth.currentUser,
     pictures: state.pictures,

@@ -39,10 +39,12 @@ class UserForm extends Component {
   render() {
    
     return(
+      <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       <Container >
-        <br></br>
-        <br></br>
-        <br></br>
       <Form onSubmit={this.handleSubmit}>
     <Form.Row>
     <Form.Group as={Col} >
@@ -71,16 +73,13 @@ class UserForm extends Component {
       <Form.Control onChange={this.handleChange} value={this.state.password_confirmation} name="password_confirmation" type="password" placeholder="Enter Password Confirmation" />
     </Form.Group>
     </Form.Row>
-
-
-
-
     <Button variant="primary" type="submit">
       Submit
     </Button>
       {this.props.auth.message.map((m, idx)=> <h1 key={idx}>{m}</h1>)}
     </Form>
     </Container>
+    </div>
     )
   }
 

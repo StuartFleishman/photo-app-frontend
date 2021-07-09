@@ -62,12 +62,6 @@ class PictureForm extends Component {
     return this.props.categories.map(category => <option key={category.id} value={category.id} name={category.id}>{category.name}</option>)
   }
 
-
-  // filterPicCategories = (event) => {
-  //   const category_id = parseInt(event.target.value)
-  //   const v =this.state.pictures.filter
-  // }
-
   
   render() {
     return (
@@ -75,6 +69,7 @@ class PictureForm extends Component {
         <br></br>
         <br></br>
         <br></br>
+        <Container>
     <Form onSubmit={this.handleSubmit}>
         <Form.Row>
         <Form.Group as={Col} controlId="formGridEmail">
@@ -101,6 +96,7 @@ class PictureForm extends Component {
           Submit
         </Button>
     </Form>
+    </Container>
   </div>
     )
   }

@@ -6,10 +6,7 @@ import CardColumns from 'react-bootstrap/CardColumns';
 
 const Pictures = ({pictures, handleLikes, hanldeFilterCategories, categories}) => {
   
-  // const renderCategories = () => {
-  //   return categories.map(category => <option key={category.id} value={category.id} name={category.id}>{category.name}</option>)
-  // }
-
+ 
   const renderCategories = categories.map(category => <option key={category.id} value={category.id} name={category.id}>{category.name}</option>)
 
   const renderPictures = pictures.map(picture => <Picture key={picture.id} id={picture.id} handleLikes={handleLikes} category={picture.category_id} title={picture.title} image={picture.image_url} likes={picture.likes} />)

@@ -4,10 +4,6 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
 
 
-
-
-
-
 const UserCard = ({title, image, likes, id, deletePicture}) => {
 
   return (
