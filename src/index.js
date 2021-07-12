@@ -17,7 +17,6 @@ const combineReducer = combineReducers({users: usersReducer, categories: categor
 const store = createStore(combineReducer, applyMiddleware(thunk))
 
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

@@ -14,18 +14,16 @@ class TopRated extends Component {
     this.props.fetchUsers()
   }
 
-  ratedPictures = () => {
-    return this.props.ratedPics.map(pic => <RatedCard key={pic.id} categories={this.props.categories} users={this.props.users} categoryId={pic.category_id} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)
+  sortedPics = () => {
+    const ratedPics = this.props.pictures.sort((a, b) => b.likes - a.likes)
+    return ratedPics.map(pic => <RatedCard key={pic.id} categories={this.props.categories} users={this.props.users} categoryId={pic.category_id} userId={pic.user_id} id={pic.id} image={pic.image_url} title={pic.title} likes={pic.likes} />)
   }
-  
 
   
   render() {
-  
-  
     return (
       <div>
-        {this.ratedPictures()}
+        {this.sortedPics()}
       </div>
     )
   }
@@ -33,15 +31,10 @@ class TopRated extends Component {
 
 const mapStateToProps = (state) => {
 
-  const ratedPics = state.pictures.sort((a, b) => b.likes - a.likes)
-
-
   return {
-    auth: state.auth,
     users: state.users,
     pictures: state.pictures,
-    categories: state.categories,
-    ratedPics: ratedPics
+    categories: state.categories
   }
 }
 

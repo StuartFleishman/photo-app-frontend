@@ -6,7 +6,8 @@ import {connect} from 'react-redux'
 
 class Login extends Component {
 
-  state = {
+ 
+   state = {
     name: "",
     email: "",
     password: ""
@@ -24,6 +25,7 @@ class Login extends Component {
     event.preventDefault()
  
     this.props.login(this.state, this.props.history)
+  
     this.setState({
       name: "",
       email: "",
@@ -50,8 +52,8 @@ class Login extends Component {
         <input onChange={this.handleChange} type="password" name="password" value={this.state.password} />
         <br />
         <input type="submit" value="login" />
-       {!this.props.auth.error ? <h1>Please Log In</h1> : <h1>Please Try Again</h1>}
       </form>
+      {this.props.auth.message}
       </div>
       
     )
@@ -60,6 +62,8 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
+
+
  
   return {
     auth: state.auth

@@ -1,5 +1,5 @@
 export default function picturesReducer(state = [], action) {
-  console.log(action.type)
+  
   switch(action.type) {
     case 'GOT_PICTURES': {
       return action.payload
@@ -23,7 +23,7 @@ export default function picturesReducer(state = [], action) {
         }
      })
 
-     case "DELETED_ITEM": 
+     case "DELETED_PIC": 
       
         const newPic = state.filter(pic => pic.id !== action.payload)
         return newPic

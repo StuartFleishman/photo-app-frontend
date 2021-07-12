@@ -7,9 +7,7 @@ const User = ({name, id}) => {
       <br></br>
       <br></br>
       <br></br>
-      <ul>
       <Link to={`/users/${id}`}>{name}</Link>
-      </ul>
     </div>
   )
 }

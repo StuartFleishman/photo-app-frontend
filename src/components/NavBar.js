@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {NavLink, Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {connect} from 'react-redux'
 import {logoutUser} from '../actions/usersAction'
 import * as ReactBootStrap from "react-bootstrap"

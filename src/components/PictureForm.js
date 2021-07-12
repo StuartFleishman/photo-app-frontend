@@ -47,6 +47,8 @@ class PictureForm extends Component {
     formData.append('image_url', this.state.image_url);
     formData.append('user_id', this.state.user_id);
 
+    
+
     this.props.createPicture(formData, this.props.history)
 
     this.setState({
@@ -55,6 +57,8 @@ class PictureForm extends Component {
       category_id: "",
       user_id: ""
     })
+
+    
 
   }
 
@@ -105,9 +109,7 @@ class PictureForm extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    categories: state.categories,
-    pictures: state.pictures,
-    loading: false
+    categories: state.categories
   }
 }
 

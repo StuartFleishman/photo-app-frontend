@@ -1,13 +1,8 @@
 const url = "http://127.0.0.1:3001/users"
 
-
 const setUsers = (users) => ({type: "GOT_USERS", payload: users})
 
-const addUser = (user) => ({type: 'ADD_USER', payload: user})
-
-
-
-export const unsuccesuflLogin = (error) => ({type: 'UN_SUCCESSFUL', payload: error})
+const unsuccesuflLogin = (error) => ({type: 'UN_SUCCESSFUL', payload: error})
 
 const unsuccesuflCreate = (error) => ({type: 'UN_SUCCESSFUL_CREATE', payload: error})
 
@@ -88,10 +83,7 @@ export const login = (user, history) => {
       history.push('/pictures/new')
     }
     })
-    .catch(error => {
-      dispatch(unsuccesuflLogin)
-     
-    })
+    
   }
 }
 

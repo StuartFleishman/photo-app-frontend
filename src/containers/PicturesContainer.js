@@ -3,12 +3,7 @@ import {connect} from 'react-redux'
 import {fetchPictures, updateLikes} from '../actions/picturesAction'
 import {fetchCategories} from '../actions/categoriesAction'
 import Pictures from '../components/Pictures'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import {Switch,Route} from "react-router-dom";
 import PictureShow from '../components/PictureShow'
 
 
@@ -74,9 +69,9 @@ class PicturesContainer extends Component {
 
 
 const mapStateToProps = (state) => {
+
  
   return {
-    auth: state.auth,
     pictures: state.pictures,
     categories: state.categories,
   }

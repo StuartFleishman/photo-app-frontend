@@ -24,7 +24,7 @@ class Home extends Component {
         <br></br>
         <br></br>
         <br></br>
-        {this.props.auth.loggedIn ? <h1> {this.props.user.name} 's Collection </h1> : <h1>Log in or Sign up</h1> }
+        {this.props.auth.loggedIn ? <h1> {this.props.user.name}'s Collection </h1> : <h1>Log in or Sign up</h1> }
         <CardColumns>
         {this.setUserPics()}
         </CardColumns>
