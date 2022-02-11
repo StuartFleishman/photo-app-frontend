@@ -2,7 +2,7 @@ First Project with React.JS
 
 Social Media site that allows you upload a photo, like photos, and view top liked photos. 
 
-git clone git@github.com:StuartFleishman/photo-app-frontend.git
+git clone https://github.com/StuartFleishman/photo-app-frontend.git
 
 npm install 
 
